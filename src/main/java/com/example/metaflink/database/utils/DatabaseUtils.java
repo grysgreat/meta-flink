@@ -33,10 +33,7 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author binghe
@@ -83,7 +80,7 @@ public class DatabaseUtils {
      *
      * @param jdbcTemplate
      * @param metaSql      查询元数据
-     * @param tableName    表名
+     * @param tableName    表名 可以为空 自动提取
      * @return
      */
     public static MetaInfo getMetaInfo(JdbcTemplate jdbcTemplate, String metaSql, String tableName) throws SQLException {
@@ -102,7 +99,7 @@ public class DatabaseUtils {
         // <表名,[主键, ...]>
         Map<String, List<String>> tables = new HashMap<>();
         try {
-            connection = jdbcTemplate.getDataSource().getConnection();
+            connection = Objects.requireNonNull(jdbcTemplate.getDataSource()).getConnection();
             DatabaseMetaData md = connection.getMetaData();
             String name = null;
             String label = null;

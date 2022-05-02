@@ -50,8 +50,30 @@ class MetaflinkApplicationTests {
         dc.setUrl("jdbc:mysql://localhost:13306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false");
 
         JdbcTemplate jd = DataBaseUtil.getJdbcTemplate(dc);
-        MetaInfo metaInfo =   DataBaseUtil.getMetaInfo(jd ,"select * from student","student");
+        MetaInfo metaInfo =DataBaseUtil.getMetaInfo(jd ,"select * from student",null);
         System.out.println(metaInfo);
-
     }
+
+
+    /**
+     * @attention: !!!!! 需要给java包添加 tool.jar 包
+     * 位置在 /jre/lib/tool.jar
+     * @throws Exception
+     */
+    @Test
+    void clasrunertest() throws Exception {
+        String sourcse = "import java.util.Arrays;" +
+                "public class Main" +
+                "{" +
+                "public static void main(String[] args) {" +
+                "System.out.println(Arrays.toString(args));" +
+                "}" +
+                "}";
+        ClassRuner.run(sourcse, "1", "2");
+    }
+
+
+
+
+
 }
