@@ -3,6 +3,7 @@ package com.example.metaflink.util;
 import com.example.metaflink.database.config.DatabaseConfig;
 import com.example.metaflink.database.config.Field;
 import com.example.metaflink.database.config.MetaInfo;
+import com.example.metaflink.database.config.Table;
 import com.example.metaflink.exception.ConnectorException;
 import com.sun.rowset.CachedRowSetImpl;
 import org.apache.commons.dbcp.BasicDataSource;
@@ -112,6 +113,55 @@ public class DataBaseUtil {
             close(connection);
         }
         return new MetaInfo(fields, resultSet.size());
+    }
+
+    public static Table getTableMetaInfo(JdbcTemplate jdbcTemplate, String metaSql, String tableName) throws SQLException {
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(metaSql);
+        ResultSetWrappingSqlRowSet rowSet = (ResultSetWrappingSqlRowSet) sqlRowSet;
+        CachedRowSetImpl resultSet = (CachedRowSetImpl) rowSet.getResultSet();
+        SqlRowSetMetaData metaData = rowSet.getMetaData();
+
+        // 查询表字段信息
+        int columnCount = metaData.getColumnCount();
+        if (1 > columnCount) {
+            throw new ConnectorException("查询表字段不能为空.");
+        }
+        Connection connection = null;
+        List<Field> fields = new ArrayList<>(columnCount);
+        // <表名,[主键, ...]>
+        Map<String, List<String>> tables = new HashMap<>();
+        Table newtable = new Table();
+
+        try {
+            connection = Objects.requireNonNull(jdbcTemplate.getDataSource()).getConnection();
+            DatabaseMetaData md = connection.getMetaData();
+            String name = null;
+            String label = null;
+            String typeName = null;
+            String table = null;
+            int columnType;
+            boolean pk;
+            for (int i = 1; i <= columnCount; i++) {
+                table = StringUtils.isNotBlank(tableName) ? tableName : metaData.getTableName(i);
+                if (null == tables.get(table)) {
+                    tables.putIfAbsent(table, findTablePrimaryKeys(md, table));
+                }
+                name = metaData.getColumnName(i);
+                label = metaData.getColumnLabel(i);
+                typeName = metaData.getColumnTypeName(i);
+                columnType = metaData.getColumnType(i);
+                pk = isPk(tables, table, name);
+                fields.add(new Field(label, typeName, columnType, pk));
+            }
+            // 生成新Table类型
+            newtable.setName(table);
+            newtable.setColumn(fields);
+            newtable.setCount(resultSet.size());
+        } finally {
+            tables.clear();
+            close(connection);
+        }
+        return newtable;
     }
 
     private static boolean isPk(Map<String, List<String>> tables, String tableName, String name) {

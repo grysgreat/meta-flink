@@ -56,6 +56,6 @@ public class MetaInfo implements Serializable {
 
     @Override
     public String toString() {
-        return new StringBuilder().append("MetaInfo{").append("column=").append(column).append(", count=").append(count).append('}').toString();
+        return "MetaInfo{" + "column=" + column + ", count=" + count + '}';
     }
 }

@@ -4,6 +4,7 @@ import com.example.metaflink.command.Command;
 import com.example.metaflink.command.CommandRpcClinetAdapter;
 import com.example.metaflink.database.config.DatabaseConfig;
 import com.example.metaflink.database.config.MetaInfo;
+import com.example.metaflink.database.config.Table;
 import com.example.metaflink.util.DataBaseUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,6 +41,12 @@ class MetaflinkApplicationTests {
      * Field{name='name', typeName='VARCHAR', type=12, pk=false},
      * Field{name='birth', typeName='DATE', type=91, pk=false}],
      * count=1}
+     *
+     * Table{name='student',
+     * column=[Field{name='id', typeName='INT', type=4, pk=true},
+     * Field{name='name', typeName='VARCHAR', type=12, pk=false},
+     * Field{name='birth', typeName='DATE', type=91, pk=false}],
+     * count=3}
      */
     @Test
     void testdatabase() throws SQLException {
@@ -52,6 +59,9 @@ class MetaflinkApplicationTests {
         JdbcTemplate jd = DataBaseUtil.getJdbcTemplate(dc);
         MetaInfo metaInfo =DataBaseUtil.getMetaInfo(jd ,"select * from student",null);
         System.out.println(metaInfo);
+
+        Table table = DataBaseUtil.getTableMetaInfo(jd ,"select * from student",null);
+        System.out.println(table);
     }
 
 

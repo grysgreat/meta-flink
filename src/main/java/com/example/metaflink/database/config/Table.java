@@ -27,6 +27,15 @@ public class Table implements Serializable {
 
     // 表名
     private String name;
+    private String sqlType;
+
+    public String getSqlType() {
+        return sqlType;
+    }
+
+    public void setSqlType(String sqlType) {
+        this.sqlType = sqlType;
+    }
 
     /**
      * 属性字段
@@ -39,6 +48,16 @@ public class Table implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Table{" +
+                "name='" + name + '\'' +
+                ", sqlType='" + sqlType + '\'' +
+                ", column=" + column +
+                ", count=" + count +
+                '}';
     }
 
     public Table setName(String name) {
