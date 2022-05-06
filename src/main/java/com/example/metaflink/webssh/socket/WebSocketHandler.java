@@ -33,9 +33,12 @@ public class WebSocketHandler implements org.springframework.web.socket.WebSocke
     @Override
     public void afterConnectionEstablished(WebSocketSession session) {
         logger.info("用户[ {} ]成功连接!", session.getAttributes().get(Const.SESSION_KEY));
-
         // 初始化连接信息
         sshService.init(session);
+//        handleMessage(session, new TextMessage("{\"type\":\"command\",\"message\":\"bash /opt/module/flink-1.13.2/bin/sql-client.sh\"}"));
+//        handleMessage( session, new TextMessage("{\"type\":\"command\",\"message\":\"\r\"}"));
+       // handleMessage(WebSocketSession session, )
+        //sshService.receive(session, ((TextMessage) message).getPayload());
     }
 
     /**
@@ -48,8 +51,8 @@ public class WebSocketHandler implements org.springframework.web.socket.WebSocke
     public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) {
         if (message instanceof TextMessage) {
             logger.info("用户[ {} ]发送命令: {}", session.getAttributes().get(Const.SESSION_KEY), message.toString());
-
             // 处理接收到的终端命令
+
             sshService.receive(session, ((TextMessage) message).getPayload());
         }
     }

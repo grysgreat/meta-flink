@@ -70,8 +70,10 @@ public class SSHServiceImpl implements SSHService {
         switch (data.getType()) {
             case connect:
                 terminalHandler.connect(entry, data.getConnectInfo());
+               // terminalHandler.sendCommand(entry.getChannel(),"{\"type\":\"command\",\"message\":\"bash /opt/module/flink-1.13.2/bin/sql-client.sh\r\"}");
                 break;
             case command:
+                System.out.println(data.getCommand());
                 terminalHandler.sendCommand(entry.getChannel(), data.getCommand());
                 break;
             default:

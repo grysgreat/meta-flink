@@ -63,7 +63,7 @@ public class TerminalHandler {
                 }
 
                 sendCommand(entry.getChannel(), "\r");
-
+                sendCommand(entry.getChannel(), "\r");
                 InputStream is = null;
                 try {
                     is = entry.getChannel().getInputStream();
@@ -100,7 +100,6 @@ public class TerminalHandler {
         if (channel == null) {
             return;
         }
-
         try {
             OutputStream outputStream = channel.getOutputStream();
             outputStream.write(command.getBytes());
