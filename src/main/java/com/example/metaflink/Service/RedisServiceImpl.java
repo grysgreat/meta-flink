@@ -14,7 +14,7 @@ public class RedisServiceImpl implements RedisService{
     private RedisMapper redisMapper;
     @Override
     public void InsertRedis(RedisConfig1 redisConfig) {
-
+        redisMapper.InsertRedisConfig(redisConfig);
     }
 
     @Override
@@ -24,16 +24,22 @@ public class RedisServiceImpl implements RedisService{
 
     @Override
     public RedisConfig1 ListRedisConfigById(Integer id) {
-        return null;
+        return redisMapper.ListRedisConfigById(id);
     }
 
     @Override
-    public void DeleteRedisConfigByIp(String ip) {
+    public void DeleteRedisConfigById(Integer id) {
+        redisMapper.DeleteRedisConfigById(id);
 
     }
 
     @Override
     public void DeleteAllRedisConfig() {
+        redisMapper.DeleteAllRedisConfig();
+    }
 
+    @Override
+    public void UpdateRedisConfig(RedisConfig1 redisConfig1) {
+        redisMapper.UpdateRedisConfig(redisConfig1);
     }
 }

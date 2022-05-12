@@ -21,6 +21,15 @@ package com.example.metaflink.database.config;
  * @description Redis配置
  */
 public class RedisConfig extends ConnectorConfig{
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    private Integer id;
 
     private String url;
 

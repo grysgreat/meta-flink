@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RedisConfig1 {
+public class KafKAConfig {
     public String getIp() {
         return Ip;
     }
@@ -16,12 +16,12 @@ public class RedisConfig1 {
         Ip = ip;
     }
 
-    public Integer getDestport() {
+    public Integer getDestPort() {
         return DestPort;
     }
 
-    public void setDestport(Integer destport) {
-        DestPort = destport;
+    public void setDestPort(Integer destPort) {
+        DestPort = destPort;
     }
 
     public String getTopic() {
@@ -40,16 +40,18 @@ public class RedisConfig1 {
         Id = id;
     }
 
+    private String Ip;
+    private Integer DestPort;
+    private String Topic;
     private Integer Id;
 
-    private  String Ip;
-    private  Integer DestPort;
-    private  String Topic;
+    @Override
     public String toString() {
-        return "RedisConfig1{" +
+        return "KafKAConfig{" +
                 "Ip='" + Ip + '\'' +
-                ", Destport='" + DestPort + '\'' +
-                ", Topic='" + Topic +
+                ", DestPort=" + DestPort +
+                ", Topic='" + Topic + '\'' +
+                ", Id=" + Id +
                 '}';
     }
 }

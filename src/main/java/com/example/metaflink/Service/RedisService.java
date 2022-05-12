@@ -14,7 +14,9 @@ public interface RedisService {
 
     public RedisConfig1 ListRedisConfigById(Integer id);//根据表名来查询表
 
-    public void DeleteRedisConfigByIp(String ip);//根据表名删除对应的表
+    public void DeleteRedisConfigById(Integer id);//根据表名删除对应的表
 
     public void DeleteAllRedisConfig();//删除全部的表
+
+    public void UpdateRedisConfig(RedisConfig1 redisConfig1);
 }
