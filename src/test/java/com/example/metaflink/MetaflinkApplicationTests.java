@@ -97,7 +97,7 @@ class MetaflinkApplicationTests {
         dc.setPassword("123456");
         dc.setUsername("nidefuqin");
         dc.setUrl("192.168.73");
-        dc.setId((long)(8));
+        //dc.setId((long)(8));
         dc.setSql("abababab");
         //测试列出全部DataBaseConfig的信息
         List<DatabaseConfig>databaseConfigs=dataBaseConfigService.ListAllDataBaseConfig();
@@ -123,19 +123,19 @@ class MetaflinkApplicationTests {
         {
             System.out.println(i);
         }
-        System.out.println("-------------The Delete By id Function has been tested!-------------");
-        dataBaseConfigService.DeleteAllDataBaseConfig();
-        List<DatabaseConfig>databaseConfigs3=dataBaseConfigService.ListAllDataBaseConfig();
-        if(databaseConfigs3==null)
-            System.out.println("Empty!");
-        else
-        {
-            for(DatabaseConfig i:databaseConfigs3)
-            {
-                System.out.println(i);
-            }
-        }
-        System.out.println("-------------The DeleteAll Function has been tested!-------------");
+//        System.out.println("-------------The Delete By id Function has been tested!-------------");
+//        dataBaseConfigService.DeleteAllDataBaseConfig();
+//        List<DatabaseConfig>databaseConfigs3=dataBaseConfigService.ListAllDataBaseConfig();
+//        if(databaseConfigs3==null)
+//            System.out.println("Empty!");
+//        else
+//        {
+//            for(DatabaseConfig i:databaseConfigs3)
+//            {
+//                System.out.println(i);
+//            }
+//        }
+//        System.out.println("-------------The DeleteAll Function has been tested!-------------");
 
 
 

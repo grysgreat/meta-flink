@@ -33,4 +33,10 @@ public class DataBaseConfigServiceImpl implements DataBaseConfigService {
     public void DeleteAllDataBaseConfig() {
          dataBaseConfigMapper.DeleteAllDataBaseConfig();
     }
+
+    @Override
+    public DatabaseConfig UpdateDataBaseConfig(DatabaseConfig databaseConfig) {
+        dataBaseConfigMapper.UpdateDataBaseConfigs(databaseConfig);
+        return databaseConfig;
+    }
 }
