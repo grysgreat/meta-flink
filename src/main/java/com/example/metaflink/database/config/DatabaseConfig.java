@@ -15,11 +15,22 @@
  */
 package com.example.metaflink.database.config;
 
+import com.gitee.sunchenbin.mybatis.actable.constants.MySqlTypeConstant;
+import lombok.*;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+import javax.persistence.Column;
+import javax.persistence.Table;
+
 /**
  * @author binghe
  * @version 1.0.0
  * @description 数据库配置
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class DatabaseConfig extends ConnectorConfig{
 
     /**
@@ -42,14 +53,36 @@ public class DatabaseConfig extends ConnectorConfig{
      */
     private String password;
 
+    @Override
+    public String toString() {
+        return "DatabaseConfig{" +
+                "driverClassName='" + driverClassName + '\'' +
+                ", url='" + url + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", sql='" + sql + '\'' +
+                ", id=" + id +
+                '}';
+    }
+
     /**
      * 通过SQL获取表信息
      */
     private String sql;
 
+    /**
+     * id字段
+     */
+    private Long id;
+
+    public Long getId() { return id;    }
+
+    public void setId(Long id) { this.id = id;    }
+
     public String getDriverClassName() {
         return driverClassName;
     }
+
 
     public DatabaseConfig setDriverClassName(String driverClassName) {
         this.driverClassName = driverClassName;
