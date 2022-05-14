@@ -12,7 +12,7 @@ public interface DataBaseConfigMapper {
     @Select("select * from test.DataBaseConfigs")
     public List<DatabaseConfig> ListAllDataBaseConfig();//查询全部的内容
 
-    @Insert("insert into test.DataBaseConfigs values (#{id}, #{driverClassName},#{url},#{username},#{password},#{connectorType},#{sql})")
+    @Insert("insert into test.DataBaseConfigs values (#{driverClassName},#{url},#{username},#{password},#{connectorType},#{sql})")
     @Transactional
     public void InsertDatabaseConfig(DatabaseConfig databaseConfig);//增加数据库
 
