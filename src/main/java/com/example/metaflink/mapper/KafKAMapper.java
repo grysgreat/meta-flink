@@ -20,7 +20,7 @@ public interface KafKAMapper {
             "Ip=#{Ip},DestPort=#{DestPort},Topic=#{Topic}" +
             " WHERE Id =#{Id}")
     @Transactional
-    public void UpdateDataBaseConfigs(KafKAConfig kafKAConfig);//更新数据库
+    public void UpdateKaFKAConfigs(KafKAConfig kafKAConfig);//更新数据库
     @Delete("delete from test.KaFKA where Id=#{id}")
     @Transactional
     public boolean DeleteKaFKAConfigById(Integer id);//根据表名删除对应的表

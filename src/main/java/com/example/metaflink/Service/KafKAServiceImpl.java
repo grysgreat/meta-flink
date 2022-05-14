@@ -39,6 +39,6 @@ public class KafKAServiceImpl implements KafKAService{
 
     @Override
     public void UpdateKafKAConfig(KafKAConfig kaConfig) {
-        kafKAMapper.UpdateDataBaseConfigs(kaConfig);
+        kafKAMapper.UpdateKaFKAConfigs(kaConfig);
     }
 }
