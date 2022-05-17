@@ -11,13 +11,13 @@ import java.util.List;
 public interface HdfsConfigMapper {
     @Select("select * from test.Hdfs")
     public List<HdfsConfig> ListAllHdfsConfigs();//查询全部的内容
-    @Insert("insert into test.Hdfs values (#{url},#{id})")
+    @Insert("insert into test.Hdfs values (#{url},#{id},#{type})")
     @Transactional
     public void InsertHdfsConfig(HdfsConfig hdfsConfig);//增加数据库
     @Select("select * from test.Hdfs where Id=#{id}")
     public HdfsConfig ListHdfsConfigById(Integer id);//根据表名来查询表
     @Update("Update test.Hdfs SET Id=#{id}," +
-            "url=#{url}" +
+            "url=#{url},type=#{type}" +
             " WHERE Id =#{id}")
     @Transactional
     public void UpdateHdfsConfigs(HdfsConfig hdfsConfig);//更新数据库

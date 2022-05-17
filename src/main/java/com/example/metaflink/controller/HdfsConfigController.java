@@ -42,21 +42,27 @@ public class HdfsConfigController {
         return "Successfully Delete!";
     }
     @RequestMapping("/insert")
-    public HdfsConfig Insert(@RequestParam(value ="id" ,required = false)Integer id, @RequestParam(value="url") String url)
+    public HdfsConfig Insert(@RequestParam(value ="id" ,required = false)Integer id,
+                             @RequestParam(value="url") String url,
+                             @RequestParam(value = "type")String type)
     {
         HdfsConfig hdfsConfig=new HdfsConfig();
         hdfsConfig.setId(id);
         hdfsConfig.setUrl(url);
+        hdfsConfig.setType(type);
         hdfsConfigService.Insert(hdfsConfig);
         return hdfsConfig;
 
     }
     @RequestMapping("/update")
-    public HdfsConfig UpdateRedisConfig(@RequestParam(value ="id",required = true)Integer id, @RequestParam(value="url",required = false) String url)
+    public HdfsConfig UpdateRedisConfig(@RequestParam(value ="id",required = true)Integer id,
+                                        @RequestParam(value="url",required = false) String url,
+                                        @RequestParam(value = "type",required = false)String type)
     {
         HdfsConfig hdfsConfig=new HdfsConfig();
         hdfsConfig.setUrl(url);
         hdfsConfig.setId(id);
+        hdfsConfig.setType(type);
         hdfsConfigService.Update(hdfsConfig);
         return hdfsConfig;
     }

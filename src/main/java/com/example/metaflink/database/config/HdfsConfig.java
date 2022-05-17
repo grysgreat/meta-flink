@@ -10,15 +10,6 @@ import lombok.NoArgsConstructor;
 public class HdfsConfig {
 
 
-    @Override
-    public String toString() {
-        return "HdfsConfig{" +
-                "url='" + url + '\'' +
-                ", id=" + id +
-                '}';
-    }
-
-
     public String getUrl() {
         return url;
     }
@@ -38,5 +29,23 @@ public class HdfsConfig {
     private String url;
     private Integer id;
 
+    public String getType() {
+        return type;
+    }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    private String type;
+
+
+    @Override
+    public String toString() {
+        return "HdfsConfig{" +
+                "url='" + url + '\'' +
+                ", id=" + id +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }
