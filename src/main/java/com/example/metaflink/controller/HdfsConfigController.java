@@ -13,61 +13,51 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Hdfs")
+@CrossOrigin
 public class HdfsConfigController {
     @Autowired
     private HdfsConfigService hdfsConfigService;
-    @GetMapping("/FindAllHdfsConfig")
-    public String findAll()
+    @RequestMapping("/FindAllHdfsConfig")
+    public List<HdfsConfig> findAll()
     {
         List<HdfsConfig> hdfsConfigs=hdfsConfigService.FindAllHdfsConfigs();
-        try {
-            String  databasejsons=new ObjectMapper().writeValueAsString(hdfsConfigs);
-            return databasejsons;
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return hdfsConfigs;
     }
-    @GetMapping("/FindHdfsConfigByid/{id}")
-    public String findHdfsConfigbyid(@PathVariable Integer id)
+    @RequestMapping("/FindHdfsConfigByid/{id}")
+    public HdfsConfig findHdfsConfigbyid(@PathVariable Integer id)
     {
         HdfsConfig hdfsConfig=hdfsConfigService.FindHdfsConfigById(id);
-        try {
-            String dabasejson=new ObjectMapper().writeValueAsString(hdfsConfig);
-            return dabasejson;
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return hdfsConfig;
     }
-    @GetMapping("/DeleteHdfsConfigByid/{id}")
-    public String deleteHdfsConfigByid(@PathVariable Integer id)
+    @RequestMapping("/DeleteHdfsConfigByid/{id}")
+    public boolean deleteHdfsConfigByid(@PathVariable Integer id)
     {
         hdfsConfigService.DeleteHdfsConfigsById(id);
-        return "SuccessfullyDeleted!";
+        return true;
     }
-    @GetMapping("/DeleteAll")
+    @RequestMapping("/DeleteAll")
     public String deleteAllHdfsConfig()
     {
         hdfsConfigService.DeleteAllHdfsConfigs();
         return "Successfully Delete!";
     }
-    @GetMapping("/insert")
-    public String Insert(@RequestParam(value ="id" ,required = false)Integer id, @RequestParam(value="url") String url)
+    @RequestMapping("/insert")
+    public HdfsConfig Insert(@RequestParam(value ="id" ,required = false)Integer id, @RequestParam(value="url") String url)
     {
         HdfsConfig hdfsConfig=new HdfsConfig();
         hdfsConfig.setId(id);
         hdfsConfig.setUrl(url);
         hdfsConfigService.Insert(hdfsConfig);
-        return "Successfully Inserted";
+        return hdfsConfig;
+
     }
     @RequestMapping("/update")
-    public String UpdateRedisConfig(@RequestParam(value ="id",required = true)Integer id, @RequestParam(value="url",required = false) String url)
+    public HdfsConfig UpdateRedisConfig(@RequestParam(value ="id",required = true)Integer id, @RequestParam(value="url",required = false) String url)
     {
         HdfsConfig hdfsConfig=new HdfsConfig();
         hdfsConfig.setUrl(url);
         hdfsConfig.setId(id);
         hdfsConfigService.Update(hdfsConfig);
-        return "Update Successfully";
+        return hdfsConfig;
     }
 }

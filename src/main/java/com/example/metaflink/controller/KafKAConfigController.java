@@ -10,50 +10,52 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/KafKA")
 public class KafKAConfigController {
     @Autowired
     private KafKAService kafKAService;
 
-    @GetMapping("/FindAllKafKAConfigs")
-    public String FindAll() {
+    @RequestMapping("/FindAllKafKAConfigs")
+    public List<KafKAConfig> FindAll() {
         List<KafKAConfig> kafKAConfigs = kafKAService.FindAllKafKaConfigs();
         try {
             String databasejsons = new ObjectMapper().writeValueAsString(kafKAConfigs);
-            return databasejsons;
+            return kafKAConfigs;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return "";
+        return kafKAConfigs;
     }
 
-    @GetMapping("/FindKafKAById/{id}")
-    public String FindById(@PathVariable Integer id) {
+    @RequestMapping("/FindKafKAById/{id}")
+    public KafKAConfig FindById(@PathVariable Integer id) {
         KafKAConfig kafKAConfig = kafKAService.FindKafKaConfigById(id);
         try {
             String databasejsons = new ObjectMapper().writeValueAsString(kafKAConfig);
-            return databasejsons;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return "";
+        return kafKAConfig;
     }
 
-    @GetMapping("/DeleteAllKafKAConfigs")
-    public String DeleteAll() {
+    @RequestMapping("/DeleteAllKafKAConfigs")
+    public Boolean DeleteAll() {
         kafKAService.DeleteAllKafKAConfigs();
-        return "Successfully Deleted!";
+        return true;
     }
 
-    @GetMapping("/DeleteKafKAConfigByid/{id}")
-    public String DeleteById(@PathVariable Integer id) {
+    @RequestMapping("/DeleteKafKAConfigByid/{id}")
+    public boolean DeleteById(@PathVariable Integer id) {
         kafKAService.DeleteKafKAConfigById(id);
-        return "SuccessfullyDeleted";
+        return true;
     }
 
-    @GetMapping("/Insert")
-    public String Insert(@RequestParam(value = "id",required = false) Integer id, @RequestParam(value = "Url") String url,
-                         @RequestParam(value = "Topic") String Topic, @RequestParam(value = "DestPort") Integer DestPort)
+    @RequestMapping("/Insert")
+    public KafKAConfig Insert(@RequestParam(value = "id",required = false) Integer id,
+                         @RequestParam(value = "Url") String url,
+                         @RequestParam(value = "Topic") String Topic,
+                         @RequestParam(value = "DestPort") Integer DestPort)
     {
         KafKAConfig kaConfig=new KafKAConfig();
         kaConfig.setId(id);
@@ -61,10 +63,10 @@ public class KafKAConfigController {
         kaConfig.setUrl(url);
         kaConfig.setTopic(Topic);
         kafKAService.InsertKafKAConfig(kaConfig);
-        return "Successfully Inserted";
+        return kaConfig;
     }
     @RequestMapping("/update")
-    public String UpdateKafKAConfig(@RequestParam(value = "id",required = true) Integer id, @RequestParam(value = "Url",required = false) String url,
+    public KafKAConfig UpdateKafKAConfig(@RequestParam(value = "id",required = true) Integer id, @RequestParam(value = "Url",required = false) String url,
                                     @RequestParam(value = "Topic",required = false) String Topic, @RequestParam(value = "DestPort",required = false) Integer DestPort)
     {
         KafKAConfig kafKAConfig=new KafKAConfig();
@@ -73,7 +75,7 @@ public class KafKAConfigController {
         kafKAConfig.setId(id);
         kafKAConfig.setUrl(url);
         kafKAService.UpdateKafKAConfig(kafKAConfig);
-        return "Update Successfully";
+        return kafKAConfig;
     }
 
 }

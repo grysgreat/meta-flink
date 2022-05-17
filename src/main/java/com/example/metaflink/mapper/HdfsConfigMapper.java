@@ -11,7 +11,7 @@ import java.util.List;
 public interface HdfsConfigMapper {
     @Select("select * from test.Hdfs")
     public List<HdfsConfig> ListAllHdfsConfigs();//查询全部的内容
-    @Insert("insert into test.Hdfs values (#{url})")
+    @Insert("insert into test.Hdfs values (#{url},#{id})")
     @Transactional
     public void InsertHdfsConfig(HdfsConfig hdfsConfig);//增加数据库
     @Select("select * from test.Hdfs where Id=#{id}")

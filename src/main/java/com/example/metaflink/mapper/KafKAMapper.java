@@ -11,7 +11,7 @@ import java.util.List;
 public interface KafKAMapper {
     @Select("select * from test.KaFKA")
     public List<KafKAConfig> ListAllKafKAConfigs();//查询全部的内容
-    @Insert("insert into test.KaFKA values (#{Url},#{DestPort},#{Topic})")
+    @Insert("insert into test.KaFKA values (#{id},#{Url},#{DestPort},#{Topic})")
     @Transactional
     public void InsertKafKAConfig(KafKAConfig kaConfig);//增加数据库
     @Select("select * from test.KaFKA where Id=#{id}")

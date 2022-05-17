@@ -12,47 +12,36 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Socket")
+@CrossOrigin
 public class SocketController {
     @Autowired
     private SocketService socketService;
-    @GetMapping("/FindAllSocket")
-    public String findAll()
+    @RequestMapping("/FindAllSocket")
+    public List<Socket> findAll()
     {
-        List<Socket> sockets=socketService.ListAllSocket();
-        try {
-            String  databasejsons=new ObjectMapper().writeValueAsString(sockets);
-            return databasejsons;
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return socketService.ListAllSocket();
     }
-    @GetMapping("/FindSocketByid/{id}")
-    public String findSokcetbyid(@PathVariable Integer id)
+    @RequestMapping("/FindSocketByid/{id}")
+    public Socket findSokcetbyid(@PathVariable Integer id)
     {
         Socket socket=socketService.ListSocketById(id);
-        try {
-            String dabasejson=new ObjectMapper().writeValueAsString(socket);
-            return dabasejson;
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return "";
+
+        return socket;
     }
-    @GetMapping("/DeleteSocketByid/{id}")
-    public String deleteSocketByid(@PathVariable Integer id)
+    @RequestMapping("/DeleteSocketByid/{id}")
+    public boolean deleteSocketByid(@PathVariable Integer id)
     {
         socketService.DeleteSocketById(id);
-        return "SuccessfullyDeleted!";
+        return true;
     }
-    @GetMapping("/DeleteAll")
+    @RequestMapping("/DeleteAll")
     public String deleteAllSocket()
     {
         socketService.DeleteAllSocket();
         return "Successfully Delete!";
     }
-    @GetMapping("/insert")
-    public String Insert(@RequestParam(value ="id")Integer id, @RequestParam(value="url") String url,
+    @RequestMapping("/insert")
+    public Socket Insert(@RequestParam(value ="id",required = false)Integer id, @RequestParam(value="url") String url,
                          @RequestParam(value="port")Integer Port)
     {
        Socket socket=new Socket();
@@ -60,10 +49,10 @@ public class SocketController {
        socket.setPort(Port);
        socket.setUrl(url);
        socketService.InsertSocket(socket);
-        return "Successfully Inserted";
+        return socket;
     }
     @RequestMapping("/update")
-    public String UpdateRedisConfig(@RequestParam(value ="id",required = true)Integer id, @RequestParam(value="url",required = false) String url,
+    public Socket UpdateRedisConfig(@RequestParam(value ="id",required = true)Integer id, @RequestParam(value="url",required = false) String url,
                                     @RequestParam(value="port",required = false)Integer Port)
     {
         Socket socket=new Socket();
@@ -71,7 +60,7 @@ public class SocketController {
         socket.setId(id);
         socket.setPort(Port);
         socketService.UpdateSocket(socket);
-        return "Update Successfully";
+        return socket;
     }
 
 }
