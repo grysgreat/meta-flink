@@ -1,5 +1,4 @@
 DROP TABLE IF EXISTS `DataBaseConfigs`;
-DROP TABLE IF EXISTS `DataBaseConfigs`;
 CREATE TABLE `DataBaseConfigs` (
 `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
 `driverClassName` varchar(40) DEFAULT NULL COMMENT '驱动类名',

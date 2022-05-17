@@ -61,13 +61,13 @@ class MetaflinkApplicationTests {
         dc.setDriverClassName("com.mysql.jdbc.Driver");
         dc.setPassword("123456");
         dc.setUsername("root");
-        dc.setUrl("jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false");
+        dc.setUrl("jdbc:mysql://192.168.73.139:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false");
 
         JdbcTemplate jd = DataBaseUtil.getJdbcTemplate(dc);
-        MetaInfo metaInfo =DataBaseUtil.getMetaInfo(jd ,"select * from student",null);
+        MetaInfo metaInfo =DataBaseUtil.getMetaInfo(jd ,"select * from redis",null);
         System.out.println(metaInfo);
 
-        Table table = DataBaseUtil.getTableMetaInfo(jd ,"select * from student",null);
+        Table table = DataBaseUtil.getTableMetaInfo(jd ,"select * from redis",null);
         System.out.println(table);
     }
 

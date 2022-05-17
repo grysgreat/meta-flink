@@ -9,7 +9,7 @@ import java.util.List;
 public interface SocketMapper {
     @Select("select * from test.Sockets")
     public List<Socket> ListAllSocket();//查询全部的内容
-    @Insert("insert into test.Sockets values (#{port}, #{url})")
+    @Insert("insert into test.Sockets values (#{port}, #{url},#{id})")
     @Transactional
     public void InsertSocket(Socket socket);//增加数据库
     @Select("select * from test.Sockets where Id=#{id}")
