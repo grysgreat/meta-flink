@@ -54,26 +54,35 @@ public class RedisConfigController {
         return "Successfully Delete!";
     }
     @GetMapping("/insert")
-    public String Insert(@RequestParam(value ="id")Integer id,@RequestParam(value="ip") String ip,
-                         @RequestParam(value="Destport")Integer destport,@RequestParam(value="Topic")String Topic)
+    public String Insert(@RequestParam(value ="id",required = false)Integer id,@RequestParam(value="url") String url,
+                         @RequestParam(value ="Username",required = false)String Username,@RequestParam(value ="Password",required = false)String Password,
+                         @RequestParam(value ="Tablename",required = false)String Tablename,
+                         @RequestParam(value="Destport",required = false)Integer destport,@RequestParam(value="Topic",required = false)String Topic)
     {
         RedisConfig1 redisConfig1=new RedisConfig1();
-        redisConfig1.setDestport(destport);
-        redisConfig1.setId(id);
-        redisConfig1.setIp(ip);
+        redisConfig1.setDestPort(destport);
+        redisConfig1.setUrl(url);
         redisConfig1.setTopic(Topic);
+        redisConfig1.setPassword(Password);
+        redisConfig1.setTablename(Tablename);
+        redisConfig1.setUsername(Username);
         redisService.InsertRedis(redisConfig1);
         return "Successfully Inserted";
     }
     @RequestMapping("/update")
-    public String UpdateRedisConfig(@RequestParam(value = "id",required = true) Integer id, @RequestParam(value = "Ip",required = false) String ip,
-                                    @RequestParam(value = "Topic",required = false) String Topic, @RequestParam(value = "DestPort",required = false) Integer DestPort)
+    public String UpdateRedisConfig(@RequestParam(value ="id",required = true)Integer id,@RequestParam(value="url") String url,
+                                    @RequestParam(value ="Username",required = false)String Username,@RequestParam(value ="Password",required = false)String Password,
+                                    @RequestParam(value ="Tablename",required = false)String Tablename,
+                                    @RequestParam(value="Destport",required = false)Integer destport,@RequestParam(value="Topic",required = false)String Topic)
     {
         RedisConfig1 redisConfig1=new RedisConfig1();
         redisConfig1.setTopic(Topic);
-        redisConfig1.setDestport(DestPort);
+        redisConfig1.setDestPort(destport);
+        redisConfig1.setUsername(Username);
+        redisConfig1.setTablename(Tablename);
+        redisConfig1.setPassword(Password);
         redisConfig1.setId(id);
-        redisConfig1.setIp(ip);
+        redisConfig1.setUrl(url);
         redisService.UpdateRedisConfig(redisConfig1);
         return "Update Successfully";
     }

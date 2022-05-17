@@ -1,6 +1,4 @@
 package com.example.metaflink.mapper;
-
-import com.example.metaflink.database.config.RedisConfig1;
 import com.example.metaflink.database.config.Socket;
 import org.apache.ibatis.annotations.*;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +9,7 @@ import java.util.List;
 public interface SocketMapper {
     @Select("select * from test.Sockets")
     public List<Socket> ListAllSocket();//查询全部的内容
-    @Insert("insert into test.Sockets values (#{port}, #{url},#{id})")
+    @Insert("insert into test.Sockets values (#{port}, #{url})")
     @Transactional
     public void InsertSocket(Socket socket);//增加数据库
     @Select("select * from test.Sockets where Id=#{id}")

@@ -8,21 +8,32 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RedisConfig1 {
-    public String getIp() {
-        return Ip;
-    }
 
-    public void setIp(String ip) {
-        Ip = ip;
-    }
 
-    public Integer getDestport() {
+    private  String Url;
+
+    public Integer getDestPort() {
         return DestPort;
     }
 
-    public void setDestport(Integer destport) {
-        DestPort = destport;
+    public void setDestPort(Integer destPort) {
+        DestPort = destPort;
     }
+
+    private  Integer DestPort;
+    private  String Topic;
+    private Integer Id;
+    private String Username;
+
+    public String getUrl() {
+        return Url;
+    }
+
+    public void setUrl(String url) {
+        Url = url;
+    }
+
+
 
     public String getTopic() {
         return Topic;
@@ -40,16 +51,43 @@ public class RedisConfig1 {
         Id = id;
     }
 
-    private Integer Id;
+    public String getUsername() {
+        return Username;
+    }
 
-    private  String Ip;
-    private  Integer DestPort;
-    private  String Topic;
+    public void setUsername(String username) {
+        Username = username;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
+
+    public String getTablename() {
+        return Tablename;
+    }
+
+    public void setTablename(String tablename) {
+        Tablename = tablename;
+    }
+
+    private String Password;
+    private String Tablename;
+
+    @Override
     public String toString() {
         return "RedisConfig1{" +
-                "Ip='" + Ip + '\'' +
-                ", Destport='" + DestPort + '\'' +
-                ", Topic='" + Topic +
+                "Url='" + Url + '\'' +
+                ", DestPort=" + DestPort +
+                ", Topic='" + Topic + '\'' +
+                ", Id=" + Id +
+                ", Username='" + Username + '\'' +
+                ", Password='" + Password + '\'' +
+                ", Tablename='" + Tablename + '\'' +
                 '}';
     }
 }

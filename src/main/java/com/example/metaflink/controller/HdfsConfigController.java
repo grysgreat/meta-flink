@@ -53,7 +53,7 @@ public class HdfsConfigController {
         return "Successfully Delete!";
     }
     @GetMapping("/insert")
-    public String Insert(@RequestParam(value ="id")Integer id, @RequestParam(value="url") String url)
+    public String Insert(@RequestParam(value ="id" ,required = false)Integer id, @RequestParam(value="url") String url)
     {
         HdfsConfig hdfsConfig=new HdfsConfig();
         hdfsConfig.setId(id);

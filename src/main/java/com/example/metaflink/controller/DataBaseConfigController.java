@@ -9,15 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 @RestController
-
 @RequestMapping("/DataBase")
+@CrossOrigin
 public class DataBaseConfigController {
     @Autowired
     private DataBaseConfigService dataBaseConfigService;
 
-    @GetMapping("/FindALLDataBaseConfigs")
+    @RequestMapping("/FindALLDataBaseConfigs")
     public String findAll()
     {
         List<DatabaseConfig> databaseConfigs=dataBaseConfigService.ListAllDataBaseConfig();
@@ -29,20 +30,21 @@ public class DataBaseConfigController {
         }
         return "";
     }
-    @GetMapping("/Delete/{id}")
-    public String deleteDataBaseConfig(@PathVariable Integer id)
+    @RequestMapping("/Delete/{id}")
+    public Boolean deleteDataBaseConfig(@PathVariable Integer id)
     {
         dataBaseConfigService.DeleteDataBaseConfigById(id);
-        return "Successfully Delete";
+        return true;
+        //return (new HashMap<String,Boolean>() ).put("is_ok", true);
     }
-    @GetMapping("/DeleteAll")
+    @RequestMapping("/DeleteAll")
     public String deleteAllDataBaseConfig()
     {
         dataBaseConfigService.DeleteAllDataBaseConfig();
         return "Successfully Delete!";
     }
 
-    @GetMapping("/find")
+    @RequestMapping("/find")
     public String getDataBaseConfigById(@RequestParam Integer id){
         DatabaseConfig databaseConfig=dataBaseConfigService.ListDataBaseConfigById(id);
         try {
@@ -53,10 +55,12 @@ public class DataBaseConfigController {
         }
         return "";
     }
-    @GetMapping("/insert")
-    public String insertDataBaseConfigs(@RequestParam(value ="id")Long id,@RequestParam(value ="driverClassName")
-            String driverClassName ,@RequestParam(value ="url")String  url,@RequestParam(value ="username")String  username,@RequestParam(value ="password")String  password,
-                                        @RequestParam(value ="connectorType")String connectorType,@RequestParam(value = "sql")String sql)
+    @RequestMapping("/insert")
+    public DatabaseConfig insertDataBaseConfigs(@RequestParam(value ="id",required = false)Long id,@RequestParam(value ="driverClassName",required = false)
+            String driverClassName ,@RequestParam(value ="url",required = false)String url,@RequestParam(value ="username",required = false)String username,@RequestParam(value ="password",required = false)String password
+            ,@RequestParam(value ="connectorType",required = false)String  connectorType,@RequestParam(value ="sql",required = false)String  sql,
+                                                @RequestParam(value ="port",required = false)Integer  port,
+                                        @RequestParam(value ="tablename",required = false)String tablename,@RequestParam(value = "basename",required = false)String basename)
     {
         DatabaseConfig databaseConfig=new DatabaseConfig();
         databaseConfig.setDriverClassName(driverClassName);
@@ -66,8 +70,34 @@ public class DataBaseConfigController {
         databaseConfig.setConnectorType(connectorType);
         databaseConfig.setId(id);
         databaseConfig.setSql(sql);
+        databaseConfig.setBasename(basename);
+        databaseConfig.setTablename(tablename);
+        databaseConfig.setPort(port);
         dataBaseConfigService.InsertDatabaseConfig(databaseConfig);
-        return "Successfully Inserted";
+        return databaseConfig;
+    }
+
+
+    @RequestMapping("/update")//更新数据库
+    public DatabaseConfig updateDataBaseConfigs(@RequestParam(value ="id",required = false)Long id,@RequestParam(value ="driverClassName",required = false)
+            String driverClassName ,@RequestParam(value ="url",required = false)String url,@RequestParam(value ="username",required = false)String username,@RequestParam(value ="password",required = false)String password
+            ,@RequestParam(value ="connectorType",required = false)String  connectorType,@RequestParam(value ="Sql",required = false)String  sql,
+                                                @RequestParam(value ="port",required = false)Integer  port,
+                                                @RequestParam(value ="tablename",required = false)String tablename,@RequestParam(value = "basename",required = false)String basename)
+    {
+        DatabaseConfig databaseConfig=new DatabaseConfig();
+        databaseConfig.setDriverClassName(driverClassName);
+        databaseConfig.setPassword(password);
+        databaseConfig.setUrl(url);
+        databaseConfig.setUsername(username);
+        databaseConfig.setConnectorType(connectorType);
+        databaseConfig.setId(id);
+        databaseConfig.setSql(sql);
+        databaseConfig.setTablename(tablename);
+        databaseConfig.setBasename(basename);
+        databaseConfig.setPort(port);
+        dataBaseConfigService.UpdateDataBaseConfig(databaseConfig);
+        return databaseConfig;
     }
 
 

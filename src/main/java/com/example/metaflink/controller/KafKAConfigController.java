@@ -52,26 +52,26 @@ public class KafKAConfigController {
     }
 
     @GetMapping("/Insert")
-    public String Insert(@RequestParam(value = "id") Integer id, @RequestParam(value = "Ip") String ip,
+    public String Insert(@RequestParam(value = "id",required = false) Integer id, @RequestParam(value = "Url") String url,
                          @RequestParam(value = "Topic") String Topic, @RequestParam(value = "DestPort") Integer DestPort)
     {
         KafKAConfig kaConfig=new KafKAConfig();
         kaConfig.setId(id);
         kaConfig.setDestPort(DestPort);
-        kaConfig.setIp(ip);
+        kaConfig.setUrl(url);
         kaConfig.setTopic(Topic);
         kafKAService.InsertKafKAConfig(kaConfig);
         return "Successfully Inserted";
     }
     @RequestMapping("/update")
-    public String UpdateKafKAConfig(@RequestParam(value = "id",required = true) Integer id, @RequestParam(value = "Ip",required = false) String ip,
+    public String UpdateKafKAConfig(@RequestParam(value = "id",required = true) Integer id, @RequestParam(value = "Url",required = false) String url,
                                     @RequestParam(value = "Topic",required = false) String Topic, @RequestParam(value = "DestPort",required = false) Integer DestPort)
     {
         KafKAConfig kafKAConfig=new KafKAConfig();
         kafKAConfig.setTopic(Topic);
         kafKAConfig.setDestPort(DestPort);
         kafKAConfig.setId(id);
-        kafKAConfig.setIp(ip);
+        kafKAConfig.setUrl(url);
         kafKAService.UpdateKafKAConfig(kafKAConfig);
         return "Update Successfully";
     }

@@ -15,4 +15,6 @@ public interface DataBaseConfigService {
     public void DeleteDataBaseConfigById(Integer id);//根据表名删除对应的表
 
     public void DeleteAllDataBaseConfig();//删除全部的表
+
+    public DatabaseConfig UpdateDataBaseConfig(DatabaseConfig databaseConfig);
 }

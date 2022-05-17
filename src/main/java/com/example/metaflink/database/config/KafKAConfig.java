@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class KafKAConfig {
-    public String getIp() {
-        return Ip;
+    public String getUrl() {
+        return Url;
     }
 
-    public void setIp(String ip) {
-        Ip = ip;
+    public void setUrl(String url) {
+        Url = url;
     }
 
     public Integer getDestPort() {
@@ -40,7 +40,7 @@ public class KafKAConfig {
         Id = id;
     }
 
-    private String Ip;
+    private String Url;
     private Integer DestPort;
     private String Topic;
     private Integer Id;
@@ -48,7 +48,7 @@ public class KafKAConfig {
     @Override
     public String toString() {
         return "KafKAConfig{" +
-                "Ip='" + Ip + '\'' +
+                "Url='" + Url + '\'' +
                 ", DestPort=" + DestPort +
                 ", Topic='" + Topic + '\'' +
                 ", Id=" + Id +
