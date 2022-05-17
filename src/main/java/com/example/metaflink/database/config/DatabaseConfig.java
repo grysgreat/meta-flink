@@ -41,6 +41,35 @@ public class DatabaseConfig extends ConnectorConfig{
     /**
      * 连接地址
      */
+    private Integer port;
+
+    public Integer getPort() {
+        return port;
+    }
+
+    public void setPort(Integer port) {
+        this.port = port;
+    }
+
+    public String getTablename() {
+        return tablename;
+    }
+
+    public void setTablename(String tablename) {
+        this.tablename = tablename;
+    }
+
+    public String getBasename() {
+        return basename;
+    }
+
+    public void setBasename(String basename) {
+        this.basename = basename;
+    }
+
+    private String tablename;
+    private String basename;
+
     private String url;
 
     /**
@@ -52,18 +81,6 @@ public class DatabaseConfig extends ConnectorConfig{
      * 密码
      */
     private String password;
-
-    @Override
-    public String toString() {
-        return "DatabaseConfig{" +
-                "driverClassName='" + driverClassName + '\'' +
-                ", url='" + url + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", sql='" + sql + '\'' +
-                ", id=" + id +
-                '}';
-    }
 
     /**
      * 通过SQL获取表信息
@@ -122,5 +139,20 @@ public class DatabaseConfig extends ConnectorConfig{
 
     public void setSql(String sql) {
         this.sql = sql;
+    }
+
+    @Override
+    public String toString() {
+        return "DatabaseConfig{" +
+                "driverClassName='" + driverClassName + '\'' +
+                ", port=" + port +
+                ", tablename='" + tablename + '\'' +
+                ", basename='" + basename + '\'' +
+                ", url='" + url + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", sql='" + sql + '\'' +
+                ", id=" + id +
+                '}';
     }
 }

@@ -12,12 +12,15 @@ public interface DataBaseConfigMapper {
     @Select("select * from test.DataBaseConfigs")
     public List<DatabaseConfig> ListAllDataBaseConfig();//查询全部的内容
 
-    @Insert("insert into test.DataBaseConfigs values (#{driverClassName},#{url},#{username},#{password},#{connectorType},#{sql})")
+    @Insert("insert into test.DataBaseConfigs values (#{id},#{driverClassName},#{url}," +
+            "#{username},"+"#{password},"+
+            "#{connectorType},#{sql},#{port},#{tablename},#{basename})")
     @Transactional
     public void InsertDatabaseConfig(DatabaseConfig databaseConfig);//增加数据库
 
     @Update("Update test.DataBaseConfigs SET driverClassName=#{driverClassName} ," +
-            "url=#{url},username=#{username},password=#{password},connectorType=#{connectorType} ," +
+            "url=#{url} ,"+"username=#{username} ,"+"password=#{password} ,"+
+            "connectorType=#{connectorType},port=#{port},tablename=#{tablename} ," +"basename=#{basename}"+
             " WHERE id =#{id}")
     @Transactional
     public void UpdateDataBaseConfigs(DatabaseConfig databaseConfig);//更新数据库

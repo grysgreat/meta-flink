@@ -8,21 +8,32 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RedisConfig1 {
-    public String getIp() {
-        return Ip;
+
+
+    private  String Url;
+
+    public Integer getDestPort() {
+        return DestPort;
     }
 
-    public void setIp(String ip) {
-        Ip = ip;
+    public void setDestPort(Integer destPort) {
+        DestPort = destPort;
     }
 
-    public Integer getDestport() {
-        return Destport;
+    private  Integer DestPort;
+    private  String Topic;
+    private Integer Id;
+    private String Username;
+
+    public String getUrl() {
+        return Url;
     }
 
-    public void setDestport(Integer destport) {
-        Destport = destport;
+    public void setUrl(String url) {
+        Url = url;
     }
+
+
 
     public String getTopic() {
         return Topic;
@@ -32,14 +43,51 @@ public class RedisConfig1 {
         Topic = topic;
     }
 
-    private  String Ip;
-    private  Integer Destport;
-    private  String Topic;
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
+
+    public String getUsername() {
+        return Username;
+    }
+
+    public void setUsername(String username) {
+        Username = username;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
+
+    public String getTablename() {
+        return Tablename;
+    }
+
+    public void setTablename(String tablename) {
+        Tablename = tablename;
+    }
+
+    private String Password;
+    private String Tablename;
+
+    @Override
     public String toString() {
         return "RedisConfig1{" +
-                "Ip='" + Ip + '\'' +
-                ", Destport='" + Destport + '\'' +
-                ", Topic='" + Topic +
+                "Url='" + Url + '\'' +
+                ", DestPort=" + DestPort +
+                ", Topic='" + Topic + '\'' +
+                ", Id=" + Id +
+                ", Username='" + Username + '\'' +
+                ", Password='" + Password + '\'' +
+                ", Tablename='" + Tablename + '\'' +
                 '}';
     }
 }
