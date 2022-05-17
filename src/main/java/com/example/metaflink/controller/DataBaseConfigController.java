@@ -19,16 +19,10 @@ public class DataBaseConfigController {
     private DataBaseConfigService dataBaseConfigService;
 
     @RequestMapping("/FindALLDataBaseConfigs")
-    public String findAll()
+    public List<DatabaseConfig> findAll()
     {
         List<DatabaseConfig> databaseConfigs=dataBaseConfigService.ListAllDataBaseConfig();
-        try {
-            String  databasejsons=new ObjectMapper().writeValueAsString(databaseConfigs);
-            return databasejsons;
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return databaseConfigs;
     }
     @RequestMapping("/Delete/{id}")
     public Boolean deleteDataBaseConfig(@PathVariable Integer id)
@@ -38,22 +32,16 @@ public class DataBaseConfigController {
         //return (new HashMap<String,Boolean>() ).put("is_ok", true);
     }
     @RequestMapping("/DeleteAll")
-    public String deleteAllDataBaseConfig()
+    public Boolean deleteAllDataBaseConfig()
     {
         dataBaseConfigService.DeleteAllDataBaseConfig();
-        return "Successfully Delete!";
+        return true;
     }
 
     @RequestMapping("/find")
-    public String getDataBaseConfigById(@RequestParam Integer id){
+    public DatabaseConfig getDataBaseConfigById(@RequestParam Integer id){
         DatabaseConfig databaseConfig=dataBaseConfigService.ListDataBaseConfigById(id);
-        try {
-            String dabasejson=new ObjectMapper().writeValueAsString(databaseConfig);
-            return dabasejson;
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return databaseConfig;
     }
     @RequestMapping("/insert")
     public DatabaseConfig insertDataBaseConfigs(@RequestParam(value ="id",required = false)Long id,

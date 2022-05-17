@@ -39,9 +39,10 @@ PRIMARY KEY (`Id`)
 
 DROP TABLE IF EXISTS `Hdfs`;
 CREATE TABLE `Hdfs` (
-                        `Url` varchar(100) DEFAULT NULL,
-                        `Id` int(11) NOT NULL AUTO_INCREMENT,
-                        PRIMARY KEY (`Id`)
+`Url` varchar(100) DEFAULT NULL,
+`Id` int(11) NOT NULL AUTO_INCREMENT,
+'type' varchar(100) DEFAULT NULL,
+PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 DROP TABLE IF EXISTS `Sockets`;
 CREATE TABLE `Sockets` (
