@@ -16,7 +16,7 @@ public class RedisConfig1 {
     private  Integer DestPort;
     private String Tablename;
     private  String Topic;
-    public static String types="jdbc";
+    public static String types="Redis";
     public Integer getId() {
         return Id;
     }

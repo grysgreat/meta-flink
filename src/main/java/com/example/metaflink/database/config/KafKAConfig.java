@@ -45,7 +45,7 @@ public class KafKAConfig {
     private String Topic;
     private Integer Id;
 
-    public static  String types="jdbc";
+    public static  String types="KafKA";
 
 
     @Override

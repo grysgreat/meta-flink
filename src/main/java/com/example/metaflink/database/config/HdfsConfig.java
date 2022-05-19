@@ -39,7 +39,7 @@ public class HdfsConfig {
 
     private String type;
 
-    public static String types="jdbc";
+    public static String types="Hdfs";
 
 
     @Override

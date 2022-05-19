@@ -92,7 +92,7 @@ public class DatabaseConfig extends ConnectorConfig{
      */
     private Long id;
 
-    public static String types="jdbc";
+    public static String types="Database";
 
     public Long getId() { return id;    }
 
