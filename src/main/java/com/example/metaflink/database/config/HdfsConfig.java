@@ -39,6 +39,8 @@ public class HdfsConfig {
 
     private String type;
 
+    public static String types="jdbc";
+
 
     @Override
     public String toString() {

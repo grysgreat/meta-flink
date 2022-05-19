@@ -45,6 +45,9 @@ public class KafKAConfig {
     private String Topic;
     private Integer Id;
 
+    public static  String types="jdbc";
+
+
     @Override
     public String toString() {
         return "KafKAConfig{" +

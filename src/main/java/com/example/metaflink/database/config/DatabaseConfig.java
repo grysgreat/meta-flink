@@ -92,6 +92,8 @@ public class DatabaseConfig extends ConnectorConfig{
      */
     private Long id;
 
+    public static String types="jdbc";
+
     public Long getId() { return id;    }
 
     public void setId(Long id) { this.id = id;    }

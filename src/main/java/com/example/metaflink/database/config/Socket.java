@@ -38,4 +38,5 @@ public class Socket {
 
     private Integer port;
     private Integer id;
+    public static String types="jdbc";
 }
