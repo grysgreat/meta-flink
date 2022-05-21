@@ -10,7 +10,7 @@ public interface RedisMapper {
 
     @Select("select * from test.redis")
     public List<RedisConfig1> ListAllRedisConfig();//查询全部的内容
-    @Insert("insert into test.redis values (#{Url}, #{DestPort},#{Topic},#{Id},#{Username},#{Password},#{Tablename})")
+    @Insert("insert into test.redis values (#{Url}, #{port},#{Topic},#{Id},#{Username},#{Password},#{Tablename})")
     @Transactional
     public void InsertRedisConfig(RedisConfig1 redisConfig);//增加数据库
     @Select("select * from test.redis where Id=#{id}")
@@ -23,7 +23,7 @@ public interface RedisMapper {
     public boolean DeleteAllRedisConfig();//删除全部的表
 
     @Update("Update test.redis SET Url=#{Url}," +
-            "DestPort=#{DestPort},Topic=#{Topic},Id=#{Id},"+"Username=#{Username},"+"Password=#{Password},"+"Tablename=#{Tablename}"+
+            "port=#{port},Topic=#{Topic},Id=#{Id},"+"Username=#{Username},"+"Password=#{Password},"+"Tablename=#{Tablename}"+
             " WHERE Id =#{Id}")
     @Transactional
     public void UpdateRedisConfig(RedisConfig1 redisConfig1);

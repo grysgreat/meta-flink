@@ -53,7 +53,7 @@ public class DataBaseConfigController {
                                                 @RequestParam(value ="sql",required = false)String  sql,
                                                 @RequestParam(value ="port",required = false)Integer  port,
                                                 @RequestParam(value ="tablename",required = false)String tablename,
-                                                @RequestParam(value = "basename",required = false)String basename)
+                                              @RequestParam(value ="basename",required = false)String basename)
     {
         DatabaseConfig databaseConfig=new DatabaseConfig();
         databaseConfig.setDriverClassName(driverClassName);
@@ -72,11 +72,16 @@ public class DataBaseConfigController {
 
 
     @RequestMapping("/update")//更新数据库
-    public DatabaseConfig updateDataBaseConfigs(@RequestParam(value ="id",required = false)Long id,@RequestParam(value ="driverClassName",required = false)
-            String driverClassName ,@RequestParam(value ="url",required = false)String url,@RequestParam(value ="username",required = false)String username,@RequestParam(value ="password",required = false)String password
-            ,@RequestParam(value ="connectorType",required = false)String  connectorType,@RequestParam(value ="Sql",required = false)String  sql,
+    public DatabaseConfig updateDataBaseConfigs(@RequestParam(value ="id",required = false)Long id,
+                                                @RequestParam(value ="driverClassName",required = false) String driverClassName ,
+                                                @RequestParam(value ="url",required = false)String url,
+                                                @RequestParam(value ="username",required = false)String username,
+                                                @RequestParam(value ="password",required = false)String password,
+                                                @RequestParam(value ="connectorType",required = false)String  connectorType,
+                                                @RequestParam(value ="Sql",required = false)String  sql,
                                                 @RequestParam(value ="port",required = false)Integer  port,
-                                                @RequestParam(value ="tablename",required = false)String tablename,@RequestParam(value = "basename",required = false)String basename)
+                                                @RequestParam(value ="tablename",required = false)String tablename,
+                                                @RequestParam(value = "basename",required = false)String basename)
     {
         DatabaseConfig databaseConfig=new DatabaseConfig();
         databaseConfig.setDriverClassName(driverClassName);

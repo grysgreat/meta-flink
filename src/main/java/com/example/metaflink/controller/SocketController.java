@@ -32,6 +32,7 @@ public class SocketController {
     public boolean deleteSocketByid(@PathVariable Integer id)
     {
         socketService.DeleteSocketById(id);
+        System.out.println(id);
         return true;
     }
     @RequestMapping("/DeleteAll")

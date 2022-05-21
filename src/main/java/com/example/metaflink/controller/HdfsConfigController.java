@@ -44,7 +44,7 @@ public class HdfsConfigController {
     @RequestMapping("/insert")
     public HdfsConfig Insert(@RequestParam(value ="id" ,required = false)Integer id,
                              @RequestParam(value="url") String url,
-                             @RequestParam(value = "type")String type)
+                             @RequestParam(value="type")String type)
     {
         HdfsConfig hdfsConfig=new HdfsConfig();
         hdfsConfig.setId(id);

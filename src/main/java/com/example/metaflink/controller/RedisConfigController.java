@@ -48,7 +48,7 @@ public class RedisConfigController {
                                @RequestParam(value="port",required = false)Integer destport,
                                @RequestParam(value="topic",required = false)String Topic){
         RedisConfig1 redisConfig1=new RedisConfig1();
-        redisConfig1.setDestPort(destport);
+        redisConfig1.setPort(destport);
         redisConfig1.setUrl(url);
         redisConfig1.setTopic(Topic);
         redisConfig1.setPassword(Password);
@@ -68,7 +68,7 @@ public class RedisConfigController {
     {
         RedisConfig1 redisConfig1=new RedisConfig1();
         redisConfig1.setTopic(Topic);
-        redisConfig1.setDestPort(destport);
+        redisConfig1.setPort(destport);
         redisConfig1.setUsername(Username);
         redisConfig1.setTablename(Tablename);
         redisConfig1.setPassword(Password);
