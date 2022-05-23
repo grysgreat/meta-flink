@@ -16,12 +16,12 @@ public class KafKAConfig {
         Url = url;
     }
 
-    public Integer getDestPort() {
-        return DestPort;
+    public Integer getPort() {
+        return port;
     }
 
-    public void setDestPort(Integer destPort) {
-        DestPort = destPort;
+    public void setPort(Integer port) {
+        this.port = port;
     }
 
     public String getTopic() {
@@ -39,9 +39,19 @@ public class KafKAConfig {
     public void setId(Integer id) {
         Id = id;
     }
+    public  String types = "kafka";
+
+
+    public String getTypes() {
+        return types;
+    }
+
+    public void setTypes(String types) {
+        this.types = types;
+    }
 
     private String Url;
-    private Integer DestPort;
+    private Integer port;
     private String Topic;
     private Integer Id;
 
@@ -49,7 +59,7 @@ public class KafKAConfig {
     public String toString() {
         return "KafKAConfig{" +
                 "Url='" + Url + '\'' +
-                ", DestPort=" + DestPort +
+                ", DestPort=" + port +
                 ", Topic='" + Topic + '\'' +
                 ", Id=" + Id +
                 '}';

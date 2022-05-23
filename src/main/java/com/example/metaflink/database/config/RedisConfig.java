@@ -29,6 +29,16 @@ public class RedisConfig extends ConnectorConfig{
 
     // 密码
     private String password;
+    public  String types = "redis";
+
+
+    public String getTypes() {
+        return types;
+    }
+
+    public void setTypes(String types) {
+        this.types = types;
+    }
 
     public String getUrl() {
         return url;

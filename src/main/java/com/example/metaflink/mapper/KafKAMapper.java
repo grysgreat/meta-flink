@@ -11,13 +11,13 @@ import java.util.List;
 public interface KafKAMapper {
     @Select("select * from test.KaFKA")
     public List<KafKAConfig> ListAllKafKAConfigs();//查询全部的内容
-    @Insert("insert into test.KaFKA values (#{id},#{Url},#{DestPort},#{Topic})")
+    @Insert("insert into test.KaFKA values (#{id},#{Url},#{port},#{Topic})")
     @Transactional
     public void InsertKafKAConfig(KafKAConfig kaConfig);//增加数据库
     @Select("select * from test.KaFKA where Id=#{id}")
     public KafKAConfig ListKaFKAConfigById(Integer id);//根据表名来查询表
     @Update("Update test.KaFKA SET Id=#{Id}," +
-            "Url=#{Url},DestPort=#{DestPort},Topic=#{Topic}" +
+            "Url=#{Url},DestPort=#{port},Topic=#{Topic}" +
             " WHERE Id =#{Id}")
     @Transactional
     public void UpdateKaFKAConfigs(KafKAConfig kafKAConfig);//更新数据库

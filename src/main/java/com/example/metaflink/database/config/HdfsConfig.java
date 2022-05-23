@@ -9,6 +9,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class HdfsConfig {
 
+    public  String types = "hdfs";
+
+
+    public String getTypes() {
+        return types;
+    }
+
+    public void setTypes(String types) {
+        this.types = types;
+    }
 
     public String getUrl() {
         return url;

@@ -35,6 +35,15 @@ public class Socket {
                 ", id=" + id +
                 '}';
     }
+    public  String types = "redis";
+
+    public String getTypes() {
+        return types;
+    }
+
+    public void setTypes(String types) {
+        this.types = types;
+    }
 
     private Integer port;
     private Integer id;

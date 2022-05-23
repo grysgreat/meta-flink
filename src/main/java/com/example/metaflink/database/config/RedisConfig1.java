@@ -16,6 +16,16 @@ public class RedisConfig1 {
     private  String Url;
     private String Tablename;
     private  String Topic;
+    public  String types = "redis";
+
+
+    public String getTypes() {
+        return types;
+    }
+
+    public void setTypes(String types) {
+        this.types = types;
+    }
 
     public Integer getId() {
         return Id;
