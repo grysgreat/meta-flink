@@ -17,7 +17,7 @@ package com.example.metaflink.database.config;
 
 import java.io.Serializable;
 import java.util.List;
-
+import com.google.gson.*;
 /**
  * @author binghe
  * @version 1.0.0
@@ -57,5 +57,10 @@ public class MetaInfo implements Serializable {
     @Override
     public String toString() {
         return "MetaInfo{" + "column=" + column + ", count=" + count + '}';
+    }
+
+    public String TOJSon(){
+            return "";
+
     }
 }

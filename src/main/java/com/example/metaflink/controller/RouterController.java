@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @CrossOrigin
 public class RouterController {
-    @RequestMapping({"/","/login","/index"})
-    public String websshpage() {
-        return "webssh";
-    }
+//    @RequestMapping({"/","/login","/index"})
+//    public String websshpage() {
+//        return "webssh";
+//    }
 
 }
