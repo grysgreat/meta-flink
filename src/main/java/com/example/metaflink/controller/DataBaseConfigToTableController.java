@@ -54,14 +54,19 @@ public class DataBaseConfigToTableController {
     {
         DatabaseConfig databaseConfig=dataBaseConfigService.ListDataBaseConfigById(id);//先根据id查
         DatabaseConfig dataBaseConfig1=new DatabaseConfig();
-        dataBaseConfig1.setUrl(databaseConfig.getUrl());
+        dataBaseConfig1.setUrl("jdbc:mysql://"+databaseConfig.getUrl()+":"+databaseConfig.getPort().toString()+
+                "/"+ databaseConfig.getBasename()+"?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false");
+        //        dc.setUrl("jdbc:mysql://192.168.73.139:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false");
+
         dataBaseConfig1.setPassword(databaseConfig.getPassword());
         dataBaseConfig1.setDriverClassName(databaseConfig.getDriverClassName());
         dataBaseConfig1.setUsername(databaseConfig.getUsername());
+        dataBaseConfig1.setBasename(databaseConfig.getBasename());
+        dataBaseConfig1.setTablename(databaseConfig.getTablename());
         JdbcTemplate jd = DataBaseUtil.getJdbcTemplate(dataBaseConfig1);
         Table table = null;
         try {
-            table = DataBaseUtil.getTableMetaInfo(jd ,"select * from redis",null);
+            table = DataBaseUtil.getTableMetaInfo(jd ,"select * from "+  dataBaseConfig1.getTablename(),null);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
