@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class HdfsConfig {
 
-    public  String types = "hdfs";
+    public  String types = "text";
 
 
     public String getTypes() {
