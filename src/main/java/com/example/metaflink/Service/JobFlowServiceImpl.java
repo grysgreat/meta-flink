@@ -22,4 +22,11 @@ public class JobFlowServiceImpl implements JobFlowService{
     public List<JobFlow> SelectJobflow() {
         return this.jobflowMapper.SelectJobflow();
     }
+
+    @Override
+    public JobFlow SelectJobflowByid(String id) {
+        return this.jobflowMapper.SelectJobflowBYid(id );
+    }
+
+
 }

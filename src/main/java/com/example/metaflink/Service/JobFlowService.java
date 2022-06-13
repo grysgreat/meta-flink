@@ -8,4 +8,6 @@ public interface JobFlowService {
 
     public  void InsertJobflow(JobFlow jobFlow);
     public List<JobFlow> SelectJobflow();
+
+    public JobFlow SelectJobflowByid(String id);
 }

@@ -17,4 +17,7 @@ public interface JobflowMapper {
 
     @Select("SELECT * FROM test.jobflow")
     public List<JobFlow> SelectJobflow();
+
+    @Select("SELECT * FROM test.jobflow where jobid =#{id}")
+    public JobFlow SelectJobflowBYid(String id);
 }
