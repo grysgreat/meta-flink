@@ -5,6 +5,8 @@ import com.example.metaflink.Service.DataBaseConfigServiceImpl;
 import com.example.metaflink.database.config.DatabaseConfig;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +16,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/DataBase")
 @CrossOrigin
+@Api(tags = "数据库管理")
 public class DataBaseConfigController {
     @Autowired
     private DataBaseConfigService dataBaseConfigService;
 
     @RequestMapping("/FindALLDataBaseConfigs")
+    @ApiOperation(value = "获取所有的JDBC链接信息")
     public List<DatabaseConfig> findAll()
     {
         List<DatabaseConfig> databaseConfigs=dataBaseConfigService.ListAllDataBaseConfig();
