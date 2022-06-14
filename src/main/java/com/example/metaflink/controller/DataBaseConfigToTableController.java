@@ -39,8 +39,8 @@ public class DataBaseConfigToTableController {
         Table table = null;
         try {
             table = DataBaseUtil.getTableMetaInfo(jd ,"select * from "+  dataBaseConfig1.getTablename(),null);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException ignored) {
+
         }
         if(table!=null){
             String javacontext = table.Convert2JavaObject();
