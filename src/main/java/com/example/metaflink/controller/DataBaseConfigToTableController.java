@@ -5,6 +5,7 @@ import com.example.metaflink.Service.DynacticClassService;
 import com.example.metaflink.database.config.DatabaseConfig;
 import com.example.metaflink.database.config.DynaticClass;
 import com.example.metaflink.database.config.Table;
+
 import com.example.metaflink.util.DataBaseUtil;
 import com.google.gson.Gson;
 
@@ -15,16 +16,16 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
-@Api(tags="数据库到表转换管理")
+
 @RestController
 @RequestMapping("/dbtoclass")
-@CrossOrigin
+@Api(tags="数据库到表转换管理")
 public class DataBaseConfigToTableController {
     @Autowired
     private DataBaseConfigService dataBaseConfigService;
     @Autowired
     private DynacticClassService dynacticClassService;
-    @RequestMapping("/ChangeToTable/{id}")
+    @RequestMapping(value = "/ChangeToTable/{id}",method = {RequestMethod.GET,RequestMethod.OPTIONS})
     @ApiOperation(value = "根据id值将数据库信息转换成表单")
     public Table ChangeToTable(@PathVariable Integer id)
     {
@@ -32,7 +33,6 @@ public class DataBaseConfigToTableController {
         DatabaseConfig dataBaseConfig1=new DatabaseConfig();
         dataBaseConfig1.setUrl("jdbc:mysql://"+databaseConfig.getUrl()+":"+databaseConfig.getPort().toString()+
                 "/"+ databaseConfig.getBasename()+"?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false");
-        //        dc.setUrl("jdbc:mysql://192.168.73.139:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false");
 
         dataBaseConfig1.setPassword(databaseConfig.getPassword());
         dataBaseConfig1.setDriverClassName(databaseConfig.getDriverClassName());
@@ -59,11 +59,11 @@ public class DataBaseConfigToTableController {
     }
 
 
-    @PostMapping("/jsontoclass")
+    @RequestMapping (value = "/jsontoclass",method = {RequestMethod.GET,RequestMethod.OPTIONS})
     @ApiOperation(value = "json转换为类")
     public Table JsontoClass(@RequestParam(value = "metajson")  String metajson){
         Table jsontable = new Gson().fromJson(metajson,Table.class);
-        jsontable.Convert2JavaObject();//TODO: 先不做数据库存储了
+        jsontable.Convert2JavaObject();
         return jsontable;
     }
 }

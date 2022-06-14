@@ -16,19 +16,16 @@ import java.util.List;
 @Api(tags = "接口管理")
 @RestController
 @RequestMapping("/Socket")
-@CrossOrigin
 public class SocketController {
     @Autowired
     private SocketService socketService;
-
-    @RequestMapping("/FindAllSocket")
+    @RequestMapping(value = "/FindAllSocket",method = {RequestMethod.GET, RequestMethod.OPTIONS})
     @ApiOperation(value = "获取接口信息",notes = "获取全部接口信息")
     public List<Socket> findAll()
     {
         return socketService.ListAllSocket();
     }
-
-    @RequestMapping("/FindSocketByid/{id}")
+    @RequestMapping(value = "/FindSocketByid/{id}",method = {RequestMethod.GET, RequestMethod.OPTIONS})
     @ApiOperation(value = "获取接口信息",notes="根据Id值获取接口信息")
     public Socket findSokcetbyid(@PathVariable Integer id)
     {
@@ -36,7 +33,7 @@ public class SocketController {
 
         return socket;
     }
-    @RequestMapping("/DeleteSocketByid/{id}")
+    @RequestMapping(value = "/DeleteSocketByid/{id}",method = {RequestMethod.GET, RequestMethod.OPTIONS})
     @ApiOperation(value = "删除接口信息",notes="根据给定的Id值删除接口信息")
     public boolean deleteSocketByid(@PathVariable Integer id)
     {
@@ -44,14 +41,14 @@ public class SocketController {
         System.out.println(id);
         return true;
     }
-    @RequestMapping("/DeleteAll")
+    @RequestMapping(value = "/DeleteAll",method = {RequestMethod.GET, RequestMethod.OPTIONS})
     @ApiOperation(value = "删除接口信息",notes="删除全部接口信息")
     public String deleteAllSocket()
     {
         socketService.DeleteAllSocket();
         return "Successfully Delete!";
     }
-    @RequestMapping("/insert")
+    @RequestMapping(value = "/insert",method = {RequestMethod.GET,RequestMethod.OPTIONS})
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", dataType = "Long", name = "id", value = "接口编号", required = false, example = "1"),
             @ApiImplicitParam(paramType = "query", dataType = "String", name = "url", value = "URL", required = false),
@@ -69,7 +66,7 @@ public class SocketController {
        socketService.InsertSocket(socket);
         return socket;
     }
-    @RequestMapping("/update")
+    @RequestMapping(value = "/update",method = {RequestMethod.GET,RequestMethod.OPTIONS})
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", dataType = "Long", name = "id", value = "接口编号", required =true, example = "1"),
             @ApiImplicitParam(paramType = "query", dataType = "String", name = "url", value = "URL", required = false),

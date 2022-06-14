@@ -26,7 +26,7 @@ public class CommandRpcClinetAdapter {
         /**
          * Process 是执行进程的类
          */
-        String outs = "";
+        StringBuilder outs = new StringBuilder();
         log.info(" command ={} ", command);
         try {
             Process pcs = Runtime.getRuntime().exec(command.getCommandMsg());
@@ -34,7 +34,7 @@ public class CommandRpcClinetAdapter {
                     new InputStreamReader(pcs.getInputStream(), "gbk"));
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                outs += line + "\n";
+                outs.append(line).append("\n");
             }
             int rs = pcs.waitFor();//TODO : 需要解决死锁
             if (rs != 0) {
@@ -43,7 +43,7 @@ public class CommandRpcClinetAdapter {
         }catch (IOException | RuntimeException | InterruptedException e){
             log.error("----------命令执行异常-----command-- " +command.getCommandMsg()+"--output--"+outs);
         }
-        return outs;
+        return outs.toString();
 
     }
 }

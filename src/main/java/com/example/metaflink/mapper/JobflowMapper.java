@@ -12,7 +12,7 @@ import java.util.List;
 public interface JobflowMapper {
 
 
-    @Insert("INSERT INTO  test.jobflow values(#{jobid},#{jsondata})")
+    @Insert("INSERT INTO  test.jobflow values(#{jobid},#{jsondata},#{jobjson})")
     public void InsertJobflow(JobFlow jobFlow);
 
     @Select("SELECT * FROM test.jobflow")
