@@ -13,19 +13,19 @@ import java.util.List;
 public class HdfsConfigController {
     @Autowired
     private HdfsConfigService hdfsConfigService;
-    @RequestMapping(value = "/FindAllHdfsConfig",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/FindAllHdfsConfig",method = {RequestMethod.GET,RequestMethod.OPTIONS})
     public List<HdfsConfig> findAll()
     {
         List<HdfsConfig> hdfsConfigs=hdfsConfigService.FindAllHdfsConfigs();
         return hdfsConfigs;
     }
-    @RequestMapping(value = "/FindHdfsConfigByid/{id}",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/FindHdfsConfigByid/{id}",method = {RequestMethod.GET, RequestMethod.OPTIONS})
     public HdfsConfig findHdfsConfigbyid(@PathVariable Integer id)
     {
         HdfsConfig hdfsConfig=hdfsConfigService.FindHdfsConfigById(id);
         return hdfsConfig;
     }
-    @RequestMapping(value = "/DeleteHdfsConfigByid/{id}",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/DeleteHdfsConfigByid/{id}",method = {RequestMethod.GET,RequestMethod.OPTIONS})
     public boolean deleteHdfsConfigByid(@PathVariable Integer id)
     {
         hdfsConfigService.DeleteHdfsConfigsById(id);
