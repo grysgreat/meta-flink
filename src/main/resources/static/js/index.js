@@ -88,10 +88,10 @@ $(function() {
 	// }
 	$(document).ready(function(){
 		const
-			host = "192.168.0.102",
-			port = 12315,
+			host = "localhost",
+			port = 22,
 			username = "root",
-			password = "xiaogu"
+			password = "root"
 		term.reset()
 		Socket.close()
 		const socket = Socket.create()

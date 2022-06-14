@@ -94,42 +94,41 @@ public class Table implements Serializable {
 
 
     public String Convert2JavaObject(){
-        String javaObject ="";
-        javaObject+="import java.time.LocalDate;\n";
-        javaObject+="public class "+initCap(this.name)+"{\t\n";
+        StringBuilder javaObject = new StringBuilder();
+        javaObject.append("import java.time.LocalDate;\n");
+        javaObject.append("public class ").append(initCap(this.name)).append("{\t\n");
         //空构造
 
         //设置字段
         for (Field names : this.column){
-            javaObject +="public " +sqlType2JavaType(names.getTypeName()) +" "+ names.getName()+";\t\n";
+            javaObject.append("public ").append(sqlType2JavaType(names.getTypeName())).append(" ").append(names.getName()).append(";\t\n");
         }
 
         //生成get/set
         for (Field names : this.column){
-            javaObject +="public "+sqlType2JavaType(names.getTypeName()) +" get" + initCap(names.getName())+"(){\t\n";
-            javaObject +="return this."+names.getName()+";\n";
-            javaObject +="}\t\n";
+            javaObject.append("public ").append(sqlType2JavaType(names.getTypeName())).append(" get").append(initCap(names.getName())).append("(){\t\n");
+            javaObject.append("return this.").append(names.getName()).append(";\n");
+            javaObject.append("}\t\n");
         }
 
         for (Field names : this.column){
-            javaObject +="public void set" + initCap(names.getName())+"("+sqlType2JavaType(names.getTypeName())+" "+names.getName()+"){\t\n";
-            javaObject +="\t this."+names.getName()+"="+names.getName()+";\t\n";
-            javaObject +="}\t\n";
+            javaObject.append("public void set").append(initCap(names.getName())).append("(").append(sqlType2JavaType(names.getTypeName())).append(" ").append(names.getName()).append("){\t\n");
+            javaObject.append("\t this.").append(names.getName()).append("=").append(names.getName()).append(";\t\n");
+            javaObject.append("}\t\n");
         }
         //重写toString
-        javaObject+="\t@Override\r\n\tpublic String toString() {\r\n return " +
-                "\""+this.name +"[\" +";
+        javaObject.append("\t@Override\r\n\tpublic String toString() {\r\n return " + "\"").append(this.name).append("[\" +");
         for (Field names : this.column){
-            javaObject+="\""+names.getName()+":"+"\" +"+names.getName()+"+\",\"+";
+            javaObject.append("\"").append(names.getName()).append(":").append("\" +").append(names.getName()).append("+\",\"+");
         }
-        javaObject+="\"]\";\t\n}";
+        javaObject.append("\"]\";\t\n}");
 
 
 
-        javaObject+="\t\n}";
+        javaObject.append("\t\n}");
 
-        this.javaContext =javaObject;
-        return javaObject;
+        this.javaContext = javaObject.toString();
+        return javaObject.toString();
     }
 
     private String sqlType2JavaType(String sqlType) {

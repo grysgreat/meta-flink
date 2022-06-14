@@ -1,17 +1,15 @@
 package com.example.metaflink.controller;
 
 import com.example.metaflink.Service.DataBaseConfigService;
-import com.example.metaflink.Service.DataBaseConfigServiceImpl;
+
 import com.example.metaflink.database.config.DatabaseConfig;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 @RestController
 @RequestMapping("/DataBase")

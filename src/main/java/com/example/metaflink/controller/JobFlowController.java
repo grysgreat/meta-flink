@@ -3,7 +3,7 @@ package com.example.metaflink.controller;
 import com.example.metaflink.Service.JobFlowService;
 import com.example.metaflink.Service.JobFlowServiceImpl;
 import com.example.metaflink.database.config.JobFlow;
-import com.sun.tools.corba.se.idl.IncludeGen;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,8 +28,9 @@ public class JobFlowController {
 
     @RequestMapping("/insert")
     public JobFlow insert(   @RequestParam(value = "jobid") String jobid,
-                             @RequestParam(value = "jsondata") String jsondata){
-        JobFlow jobFlow =new JobFlow(jobid,jsondata);
+                             @RequestParam(value = "jsondata") String jsondata,
+                        @RequestParam(value = "jobjson") String jobjson){
+        JobFlow jobFlow =new JobFlow(jobid,jsondata ,jobjson);
         jobFlowService.InsertJobflow(jobFlow);
         return jobFlow ;
     }
