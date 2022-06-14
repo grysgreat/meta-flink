@@ -17,16 +17,16 @@ public class JobFlowController {
     @Autowired
     private JobFlowService jobFlowService;
 
-    @RequestMapping("/showall")
+    @RequestMapping(value = "/showall",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public List<JobFlow> selectAlljobflow(){
         return jobFlowService.SelectJobflow();
     }
-    @RequestMapping("/lookfor/{id}")
+    @RequestMapping(value = "/lookfor/{id}",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public JobFlow selectJobflowbyID(@PathVariable String id){
         return this.jobFlowService.SelectJobflowByid(id);
     };
 
-    @RequestMapping("/insert")
+    @RequestMapping(value = "/insert",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public JobFlow insert(   @RequestParam(value = "jobid") String jobid,
                              @RequestParam(value = "jsondata") String jsondata,
                         @RequestParam(value = "jobjson") String jobjson){

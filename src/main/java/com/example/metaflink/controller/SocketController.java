@@ -16,32 +16,32 @@ import java.util.List;
 public class SocketController {
     @Autowired
     private SocketService socketService;
-    @RequestMapping("/FindAllSocket")
+    @RequestMapping(value = "/FindAllSocket",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public List<Socket> findAll()
     {
         return socketService.ListAllSocket();
     }
-    @RequestMapping("/FindSocketByid/{id}")
+    @RequestMapping(value = "/FindSocketByid/{id}",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public Socket findSokcetbyid(@PathVariable Integer id)
     {
         Socket socket=socketService.ListSocketById(id);
 
         return socket;
     }
-    @RequestMapping("/DeleteSocketByid/{id}")
+    @RequestMapping(value = "/DeleteSocketByid/{id}",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public boolean deleteSocketByid(@PathVariable Integer id)
     {
         socketService.DeleteSocketById(id);
         System.out.println(id);
         return true;
     }
-    @RequestMapping("/DeleteAll")
+    @RequestMapping(value = "/DeleteAll",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public String deleteAllSocket()
     {
         socketService.DeleteAllSocket();
         return "Successfully Delete!";
     }
-    @RequestMapping("/insert")
+    @RequestMapping(value = "/insert",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public Socket Insert(@RequestParam(value ="id",required = false)Integer id, @RequestParam(value="url") String url,
                          @RequestParam(value="port")Integer Port)
     {
@@ -52,7 +52,7 @@ public class SocketController {
        socketService.InsertSocket(socket);
         return socket;
     }
-    @RequestMapping("/update")
+    @RequestMapping(value = "/update",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public Socket UpdateRedisConfig(@RequestParam(value ="id",required = true)Integer id, @RequestParam(value="url",required = false) String url,
                                     @RequestParam(value="port",required = false)Integer Port)
     {

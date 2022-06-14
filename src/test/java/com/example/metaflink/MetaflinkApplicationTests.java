@@ -1,17 +1,12 @@
 package com.example.metaflink;
 
 import com.example.metaflink.Service.DataBaseConfigServiceImpl;
-import com.example.metaflink.command.Command;
-import com.example.metaflink.command.CommandRpcClinetAdapter;
-import com.example.metaflink.controller.DataBaseConfigController;
 import com.example.metaflink.database.config.DatabaseConfig;
 import com.example.metaflink.database.config.MetaInfo;
 import com.example.metaflink.database.config.Table;
 import com.example.metaflink.util.ClassRuner;
 import com.example.metaflink.util.DataBaseUtil;
-import org.apache.commons.lang.ObjectUtils;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.matchers.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -35,11 +30,7 @@ class MetaflinkApplicationTests {
      * @throws InterruptedException
      */
 
-    void processcommand() throws IOException, InterruptedException {
-        Command c = new Command("ping www.baidu.com");
-        String out = CommandRpcClinetAdapter.SubmitCommand(c);
-        System.out.println(out);
-    }
+
 
     /**
      * @transation： 元数据处理测试

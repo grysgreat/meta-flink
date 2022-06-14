@@ -49,6 +49,7 @@ public class DataBaseUtil {
         if (null != jdbcTemplate) {
             DataSource dataSource = jdbcTemplate.getDataSource();
             BasicDataSource ds = (BasicDataSource) dataSource;
+            assert ds != null;
             ds.close();
         }
     }

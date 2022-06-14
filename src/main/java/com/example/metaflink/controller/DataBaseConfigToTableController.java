@@ -5,6 +5,7 @@ import com.example.metaflink.Service.DynacticClassService;
 import com.example.metaflink.database.config.DatabaseConfig;
 import com.example.metaflink.database.config.DynaticClass;
 import com.example.metaflink.database.config.Table;
+
 import com.example.metaflink.util.DataBaseUtil;
 import com.google.gson.Gson;
 
@@ -22,7 +23,7 @@ public class DataBaseConfigToTableController {
     private DataBaseConfigService dataBaseConfigService;
     @Autowired
     private DynacticClassService dynacticClassService;
-    @RequestMapping("/ChangeToTable/{id}")
+    @RequestMapping(value = "/ChangeToTable/{id}",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public Table ChangeToTable(@PathVariable Integer id)
     {
         DatabaseConfig databaseConfig=dataBaseConfigService.ListDataBaseConfigById(id);//先根据id查
@@ -56,7 +57,7 @@ public class DataBaseConfigToTableController {
     }
 
 
-    @PostMapping("/jsontoclass")
+    @RequestMapping (value = "/jsontoclass",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public Table JsontoClass(@RequestParam(value = "metajson")  String metajson){
         Table jsontable = new Gson().fromJson(metajson,Table.class);
         jsontable.Convert2JavaObject();//TODO: 先不做数据库存储了

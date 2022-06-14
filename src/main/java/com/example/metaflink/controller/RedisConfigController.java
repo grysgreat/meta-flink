@@ -14,32 +14,32 @@ import java.util.List;
 public class RedisConfigController {
     @Autowired
     private RedisService redisService;
-    @RequestMapping("/FindAllRedisConfigs")
+    @RequestMapping(value = "/FindAllRedisConfigs",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public List<RedisConfig1>  findAll()
     {
         List<RedisConfig1> redisconfigs=redisService.ListAllRedisConfig();
         return redisconfigs;
     }
-    @RequestMapping("/FindRedisConfigByid/{id}")
+    @RequestMapping(value = "/FindRedisConfigByid/{id}",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public RedisConfig1 findRedisConfigbyid(@PathVariable Integer id)
     {
         RedisConfig1 redisConfig1=redisService.ListRedisConfigById(id);
 
         return redisConfig1;
     }
-    @RequestMapping("/DeleteRedisConfigByid/{id}")
+    @RequestMapping(value = "/DeleteRedisConfigByid/{id}",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public boolean deleteRedisConfigByid(@PathVariable Integer id)
     {
         redisService.DeleteRedisConfigById(id);
         return true;
     }
-    @RequestMapping("/DeleteAll")
+    @RequestMapping(value = "/DeleteAll",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public boolean deleteAllRedisConfig()
     {
         redisService.DeleteAllRedisConfig();
         return true;
     }
-    @RequestMapping("/insert")
+    @RequestMapping(value = "/insert",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public RedisConfig1 Insert(@RequestParam(value ="id",required = false)Integer id,
                                @RequestParam(value="url") String url,
                                @RequestParam(value ="username",required = false)String Username,
@@ -57,7 +57,7 @@ public class RedisConfigController {
         redisService.InsertRedis(redisConfig1);
         return redisConfig1;
     }
-    @RequestMapping("/update")
+    @RequestMapping(value = "/update",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
     public RedisConfig1 UpdateRedisConfig(@RequestParam(value ="id",required = true)Integer id,
                                     @RequestParam(value="url") String url,
                                     @RequestParam(value ="username",required = false)String Username,
