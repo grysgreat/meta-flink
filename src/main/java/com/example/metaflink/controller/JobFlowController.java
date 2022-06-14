@@ -25,7 +25,7 @@ public class JobFlowController {
         return this.jobFlowService.SelectJobflowByid(id);
     };
 
-    @RequestMapping(value = "/insert",method = {RequestMethod.GET,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/insert",method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.OPTIONS})
     public JobFlow insert(   @RequestParam(value = "jobid") String jobid,
                              @RequestParam(value = "jsondata") String jsondata,
                         @RequestParam(value = "jobjson") String jobjson){

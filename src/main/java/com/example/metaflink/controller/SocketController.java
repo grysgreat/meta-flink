@@ -40,7 +40,7 @@ public class SocketController {
         socketService.DeleteAllSocket();
         return "Successfully Delete!";
     }
-    @RequestMapping(value = "/insert",method = {RequestMethod.GET,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/insert",method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.OPTIONS})
     public Socket Insert(@RequestParam(value ="id",required = false)Integer id, @RequestParam(value="url") String url,
                          @RequestParam(value="port")Integer Port)
     {
@@ -51,7 +51,7 @@ public class SocketController {
        socketService.InsertSocket(socket);
         return socket;
     }
-    @RequestMapping(value = "/update",method = {RequestMethod.GET,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/update",method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.OPTIONS})
     public Socket UpdateRedisConfig(@RequestParam(value ="id",required = true)Integer id, @RequestParam(value="url",required = false) String url,
                                     @RequestParam(value="port",required = false)Integer Port)
     {

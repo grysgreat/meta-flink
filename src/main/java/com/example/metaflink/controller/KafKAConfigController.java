@@ -55,7 +55,7 @@ public class KafKAConfigController {
         kafKAService.InsertKafKAConfig(kaConfig);
         return kaConfig;
     }
-    @RequestMapping(value = "/update",method = {RequestMethod.GET,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/update",method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.OPTIONS})
     public KafKAConfig UpdateKafKAConfig(@RequestParam(value = "id",required = true) Integer id, @RequestParam(value = "Url",required = false) String url,
                                     @RequestParam(value = "Topic",required = false) String Topic, @RequestParam(value = "port",required = false) Integer DestPort)
     {

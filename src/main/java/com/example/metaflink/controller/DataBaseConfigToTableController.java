@@ -22,7 +22,7 @@ public class DataBaseConfigToTableController {
     private DataBaseConfigService dataBaseConfigService;
     @Autowired
     private DynacticClassService dynacticClassService;
-    @RequestMapping(value = "/ChangeToTable/{id}",method = {RequestMethod.GET,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/ChangeToTable/{id}",method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.OPTIONS})
     public Table ChangeToTable(@PathVariable Integer id)
     {
         DatabaseConfig databaseConfig=dataBaseConfigService.ListDataBaseConfigById(id);//先根据id查
@@ -55,7 +55,7 @@ public class DataBaseConfigToTableController {
     }
 
 
-    @RequestMapping (value = "/jsontoclass",method = {RequestMethod.GET,RequestMethod.OPTIONS})
+    @RequestMapping (value = "/jsontoclass",method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.OPTIONS})
     public Table JsontoClass(@RequestParam(value = "metajson")  String metajson){
         Table jsontable = new Gson().fromJson(metajson,Table.class);
         jsontable.Convert2JavaObject();

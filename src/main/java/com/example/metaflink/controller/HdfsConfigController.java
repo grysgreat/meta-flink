@@ -13,7 +13,7 @@ import java.util.List;
 public class HdfsConfigController {
     @Autowired
     private HdfsConfigService hdfsConfigService;
-    @RequestMapping(value = "/FindAllHdfsConfig",method = {RequestMethod.GET,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/FindAllHdfsConfig",method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.OPTIONS})
     public List<HdfsConfig> findAll()
     {
         List<HdfsConfig> hdfsConfigs=hdfsConfigService.FindAllHdfsConfigs();
@@ -25,7 +25,7 @@ public class HdfsConfigController {
         HdfsConfig hdfsConfig=hdfsConfigService.FindHdfsConfigById(id);
         return hdfsConfig;
     }
-    @RequestMapping(value = "/DeleteHdfsConfigByid/{id}",method = {RequestMethod.GET,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/DeleteHdfsConfigByid/{id}",method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.OPTIONS})
     public boolean deleteHdfsConfigByid(@PathVariable Integer id)
     {
         hdfsConfigService.DeleteHdfsConfigsById(id);
@@ -37,7 +37,7 @@ public class HdfsConfigController {
         hdfsConfigService.DeleteAllHdfsConfigs();
         return "Successfully Delete!";
     }
-    @RequestMapping(value = "/insert",method = {RequestMethod.GET,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/insert",method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.OPTIONS})
     public HdfsConfig Insert(@RequestParam(value ="id" ,required = false)Integer id,
                              @RequestParam(value="url") String url,
                              @RequestParam(value="type")String type)

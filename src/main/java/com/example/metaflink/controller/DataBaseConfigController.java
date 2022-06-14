@@ -39,7 +39,7 @@ public class DataBaseConfigController {
         return true;
     }
 
-    @RequestMapping(value="/find",method = {RequestMethod.GET,RequestMethod.OPTIONS})
+    @RequestMapping(value="/find",method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.OPTIONS})
     public DatabaseConfig getDataBaseConfigById(@RequestParam Integer id){
         DatabaseConfig databaseConfig=dataBaseConfigService.ListDataBaseConfigById(id);
         return databaseConfig;
