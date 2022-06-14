@@ -35,8 +35,16 @@ public class Socket {
                 ", id=" + id +
                 '}';
     }
+    public  String types = "port";
+
+    public String getTypes() {
+        return types;
+    }
+
+    public void setTypes(String types) {
+        this.types = types;
+    }
 
     private Integer port;
     private Integer id;
-    public static String types="Socket";
 }

@@ -10,13 +10,23 @@ import lombok.NoArgsConstructor;
 public class RedisConfig1 {
 
     private Integer Id;
+    private  Integer port;
     private String Username;
     private String Password;
     private  String Url;
-    private  Integer DestPort;
     private String Tablename;
     private  String Topic;
-    public static String types="Redis";
+    public  String types = "redis";
+
+
+    public String getTypes() {
+        return types;
+    }
+
+    public void setTypes(String types) {
+        this.types = types;
+    }
+
     public Integer getId() {
         return Id;
     }
@@ -49,12 +59,12 @@ public class RedisConfig1 {
         Url = url;
     }
 
-    public Integer getDestPort() {
-        return DestPort;
+    public Integer getPort() {
+        return port;
     }
 
-    public void setDestPort(Integer destPort) {
-        DestPort = destPort;
+    public void setPort(Integer port) {
+        this.port = port;
     }
 
     public String getTablename() {
@@ -77,7 +87,7 @@ public class RedisConfig1 {
     public String toString() {
         return "RedisConfig1{" +
                 "Url='" + Url + '\'' +
-                ", DestPort=" + DestPort +
+                ", DestPort=" + port +
                 ", Topic='" + Topic + '\'' +
                 ", Id=" + Id +
                 ", Username='" + Username + '\'' +

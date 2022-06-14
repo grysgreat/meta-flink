@@ -27,17 +27,17 @@ class MetaflinkApplicationTests {
         System.out.println("Hello world!");
     }
 
-    /**
-     * @transation： 命令执行的测试
-     * @throws IOException
-     * @throws InterruptedException
-     */
-    @Test
-    void processcommand() throws IOException, InterruptedException {
-        Command c = new Command("ping www.baidu.com");
-        String out = CommandRpcClinetAdapter.SubmitCommand(c);
-        System.out.println(out);
-    }
+//    /**
+//     * @transation： 命令执行的测试
+//     * @throws IOException
+//     * @throws InterruptedException
+//     */
+//    @Test
+//    void processcommand() throws IOException, InterruptedException {
+//        Command c = new Command("ping www.baidu.com");
+//        String out = CommandRpcClinetAdapter.SubmitCommand(c);
+//        System.out.println(out);
+//    }
 
     /**
      * @transation： 元数据处理测试
@@ -55,39 +55,39 @@ class MetaflinkApplicationTests {
      * Field{name='birth', typeName='DATE', type=91, pk=false}],
      * count=3}
      */
-    @Test
-    void testdatabase() throws SQLException {
-        DatabaseConfig dc = new DatabaseConfig();
-        dc.setDriverClassName("com.mysql.jdbc.Driver");
-        dc.setPassword("123456");
-        dc.setUsername("root");
-        dc.setUrl("jdbc:mysql://192.168.73.139:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false");
+//    @Test
+//    void testdatabase() throws SQLException {
+//        DatabaseConfig dc = new DatabaseConfig();
+//        dc.setDriverClassName("com.mysql.jdbc.Driver");
+//        dc.setPassword("123456");
+//        dc.setUsername("root");
+//        dc.setUrl("jdbc:mysql://192.168.73.139:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false");
+//
+//        JdbcTemplate jd = DataBaseUtil.getJdbcTemplate(dc);
+//        MetaInfo metaInfo =DataBaseUtil.getMetaInfo(jd ,"select * from redis",null);
+//        System.out.println(metaInfo);
+//
+//        Table table = DataBaseUtil.getTableMetaInfo(jd ,"select * from redis",null);
+//        System.out.println(table);
+//    }
 
-        JdbcTemplate jd = DataBaseUtil.getJdbcTemplate(dc);
-        MetaInfo metaInfo =DataBaseUtil.getMetaInfo(jd ,"select * from redis",null);
-        System.out.println(metaInfo);
 
-        Table table = DataBaseUtil.getTableMetaInfo(jd ,"select * from redis",null);
-        System.out.println(table);
-    }
-
-
-    /**
-     * @attention: !!!!! 需要给java包添加 tool.jar 包
-     * 位置在 /jre/lib/tool.jar
-     * @throws Exception
-     */
-    @Test
-    void clasrunertest() throws Exception {
-        String sourcse = "import java.util.Arrays;" +
-                "public class Main" +
-                "{" +
-                "public static void main(String[] args) {" +
-                "System.out.println(Arrays.toString(args));" +
-                "}" +
-                "}";
-        ClassRuner.run(sourcse, "1", "2");
-    }
+//    /**
+//     * @attention: !!!!! 需要给java包添加 tool.jar 包
+//     * 位置在 /jre/lib/tool.jar
+//     * @throws Exception
+//     */
+//    @Test
+//    void clasrunertest() throws Exception {
+//        String sourcse = "import java.util.Arrays;" +
+//                "public class Main" +
+//                "{" +
+//                "public static void main(String[] args) {" +
+//                "System.out.println(Arrays.toString(args));" +
+//                "}" +
+//                "}";
+//        ClassRuner.run(sourcse, "1", "2");
+//    }
     @Autowired
     DataBaseConfigServiceImpl dataBaseConfigService;
     @Test

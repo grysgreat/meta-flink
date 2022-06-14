@@ -37,6 +37,7 @@ public class DataBaseUtil {
         dataSource.setUrl(config.getUrl());
         dataSource.setUsername(config.getUsername());
         dataSource.setPassword(config.getPassword());
+
         // 是否自动回收超时连接
         dataSource.setRemoveAbandoned(true);
         // 超时时间(以秒数为单位)

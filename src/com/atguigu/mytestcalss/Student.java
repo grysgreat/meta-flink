@@ -5,14 +5,14 @@ package com.atguigu.mytestcalss;
  * author name: FelixChan
  * create time: 2022-05-03 00:47:47
  */ 
-public class Student extends EntityHelper{
+public class Student {
 
 	private int id;
 	private String name;
 	private LocalDate birth;
 
 	public Student() {
-		super();
+
 	}
 	public Student(int id,String name,LocalDate birth) {
 		this.id=id;
@@ -45,7 +45,6 @@ public class Student extends EntityHelper{
 			", birth=" + birth + 
 			"]";
 	}
-	@Override
 	public String getPrimaryKey() {
 		return "id";
 	}

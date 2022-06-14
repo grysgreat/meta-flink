@@ -38,6 +38,16 @@ public class DatabaseConfig extends ConnectorConfig{
      */
     private String driverClassName;
 
+    public  String types = "mysql";
+
+    public String getTypes() {
+        return types;
+    }
+
+    public void setTypes(String types) {
+        this.types = types;
+    }
+
     /**
      * 连接地址
      */
@@ -69,7 +79,6 @@ public class DatabaseConfig extends ConnectorConfig{
 
     private String tablename;
     private String basename;
-
     private String url;
 
     /**
@@ -91,8 +100,6 @@ public class DatabaseConfig extends ConnectorConfig{
      * id字段
      */
     private Long id;
-
-    public static String types="Database";
 
     public Long getId() { return id;    }
 
