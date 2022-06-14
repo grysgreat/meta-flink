@@ -24,7 +24,7 @@ import java.util.*;
  * @author luxian
  */
 public class DataBaseUtil {
-//TODO :解决这一依赖
+
 
     /**
      * 生成 JdbcTemplate 用于数据库的动态连接

@@ -80,12 +80,7 @@ $(function() {
 	 * @type {boolean}
 	 */
     var sql_init =false;
-	// document.getElementById('sql-init-Btn').onclick = ()=>{
-	// 	Socket.send({
-	// 		type: 'command',
-	// 		message: "bash /opt/module/flink-1.13.2/bin/sql-client.sh\r\n" //TODO：这里的命令需要再详细
-	// 	})
-	// }
+
 	$(document).ready(function(){
 		const
 			host = "localhost",

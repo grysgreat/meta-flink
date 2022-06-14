@@ -29,7 +29,6 @@ public class DataBaseConfigToTableController {
         DatabaseConfig dataBaseConfig1=new DatabaseConfig();
         dataBaseConfig1.setUrl("jdbc:mysql://"+databaseConfig.getUrl()+":"+databaseConfig.getPort().toString()+
                 "/"+ databaseConfig.getBasename()+"?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false");
-        //        dc.setUrl("jdbc:mysql://192.168.73.139:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false");
 
         dataBaseConfig1.setPassword(databaseConfig.getPassword());
         dataBaseConfig1.setDriverClassName(databaseConfig.getDriverClassName());
@@ -59,7 +58,7 @@ public class DataBaseConfigToTableController {
     @RequestMapping (value = "/jsontoclass",method = {RequestMethod.GET,RequestMethod.OPTIONS})
     public Table JsontoClass(@RequestParam(value = "metajson")  String metajson){
         Table jsontable = new Gson().fromJson(metajson,Table.class);
-        jsontable.Convert2JavaObject();//TODO: 先不做数据库存储了
+        jsontable.Convert2JavaObject();
         return jsontable;
     }
 }
