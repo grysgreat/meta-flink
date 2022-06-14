@@ -9,37 +9,36 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@CrossOrigin
 @RequestMapping("/Redis")
 public class RedisConfigController {
     @Autowired
     private RedisService redisService;
-    @RequestMapping(value = "/FindAllRedisConfigs",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/FindAllRedisConfigs",method = {RequestMethod.GET,RequestMethod.OPTIONS})
     public List<RedisConfig1>  findAll()
     {
         List<RedisConfig1> redisconfigs=redisService.ListAllRedisConfig();
         return redisconfigs;
     }
-    @RequestMapping(value = "/FindRedisConfigByid/{id}",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/FindRedisConfigByid/{id}",method = {RequestMethod.GET,RequestMethod.OPTIONS})
     public RedisConfig1 findRedisConfigbyid(@PathVariable Integer id)
     {
         RedisConfig1 redisConfig1=redisService.ListRedisConfigById(id);
 
         return redisConfig1;
     }
-    @RequestMapping(value = "/DeleteRedisConfigByid/{id}",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/DeleteRedisConfigByid/{id}",method = {RequestMethod.GET,RequestMethod.OPTIONS})
     public boolean deleteRedisConfigByid(@PathVariable Integer id)
     {
         redisService.DeleteRedisConfigById(id);
         return true;
     }
-    @RequestMapping(value = "/DeleteAll",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/DeleteAll",method = {RequestMethod.GET, RequestMethod.OPTIONS})
     public boolean deleteAllRedisConfig()
     {
         redisService.DeleteAllRedisConfig();
         return true;
     }
-    @RequestMapping(value = "/insert",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/insert",method = {RequestMethod.GET, RequestMethod.OPTIONS})
     public RedisConfig1 Insert(@RequestParam(value ="id",required = false)Integer id,
                                @RequestParam(value="url") String url,
                                @RequestParam(value ="username",required = false)String Username,
@@ -57,7 +56,7 @@ public class RedisConfigController {
         redisService.InsertRedis(redisConfig1);
         return redisConfig1;
     }
-    @RequestMapping(value = "/update",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
+    @RequestMapping(value = "/update",method = {RequestMethod.GET, RequestMethod.OPTIONS})
     public RedisConfig1 UpdateRedisConfig(@RequestParam(value ="id",required = true)Integer id,
                                     @RequestParam(value="url") String url,
                                     @RequestParam(value ="username",required = false)String Username,

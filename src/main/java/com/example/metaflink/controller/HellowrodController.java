@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value="/base")
-@CrossOrigin
 public class HellowrodController {
 
-    @RequestMapping(value ="/hello",method = {RequestMethod.GET, RequestMethod.POST,RequestMethod.OPTIONS})
+    @RequestMapping(value ="/hello",method = {RequestMethod.GET, RequestMethod.OPTIONS})
     public String Hellowrod(){
         return "Helloworld";
     }
