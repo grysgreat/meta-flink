@@ -73,16 +73,16 @@ public class TerminalHandler {
                     while ((i = is.read(buffer)) != -1) {
                         sendMessage(entry.getSession(), Arrays.copyOfRange(buffer, 0, i));
                     }
-                } catch (IOException ignored) {
-
+                } catch (IOException e) {
+                    e.printStackTrace();
                 } finally {
                     entry.getChannel().disconnect();
                     session.disconnect();
                     if (is != null) {
                         try {
                             is.close();
-                        } catch (IOException ignored) {
-
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
                     }
                 }

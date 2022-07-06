@@ -18,7 +18,7 @@ import org.springframework.web.socket.WebSocketSession;
  * @date 2022-04-04 15:31:00
  */
 @Component
-public class  WebSocketHandler implements org.springframework.web.socket.WebSocketHandler {
+public class WebSocketHandler implements org.springframework.web.socket.WebSocketHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(WebSocketHandler.class);
 

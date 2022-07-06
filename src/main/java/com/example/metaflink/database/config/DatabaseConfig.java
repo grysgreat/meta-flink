@@ -14,8 +14,14 @@
  * limitations under the License.
  */
 package com.example.metaflink.database.config;
-import lombok.*;
 
+import com.gitee.sunchenbin.mybatis.actable.constants.MySqlTypeConstant;
+import lombok.*;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+import javax.persistence.Column;
+import javax.persistence.Table;
 
 /**
  * @author binghe

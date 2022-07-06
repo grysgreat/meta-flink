@@ -35,7 +35,7 @@ public class Socket {
                 ", id=" + id +
                 '}';
     }
-    public  String types = "port";
+    public  String types = "redis";
 
     public String getTypes() {
         return types;

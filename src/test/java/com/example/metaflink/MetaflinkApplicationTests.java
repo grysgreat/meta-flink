@@ -1,16 +1,19 @@
 package com.example.metaflink;
 
 import com.example.metaflink.Service.DataBaseConfigServiceImpl;
-import com.example.metaflink.database.config.DatabaseConfig;
-import com.example.metaflink.database.config.MetaInfo;
-import com.example.metaflink.database.config.Table;
-import com.example.metaflink.util.ClassRuner;
+import com.example.metaflink.command.Command;
+import com.example.metaflink.command.CommandRpcClinetAdapter;
+import com.example.metaflink.controller.DataBaseConfigController;
+import com.example.metaflink.database.config.*;
+import com.example.metaflink.mapper.UserConfigMapper;
+import com.example.metaflink.mapper.UserJobConfigMapper;
 import com.example.metaflink.util.DataBaseUtil;
+import org.apache.commons.lang.ObjectUtils;
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.matchers.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -24,13 +27,17 @@ class MetaflinkApplicationTests {
         System.out.println("Hello world!");
     }
 
-    /**
-     * @transation： 命令执行的测试
-     * @throws IOException
-     * @throws InterruptedException
-     */
-
-
+//    /**
+//     * @transation： 命令执行的测试
+//     * @throws IOException
+//     * @throws InterruptedException
+//     */
+//    @Test
+//    void processcommand() throws IOException, InterruptedException {
+//        Command c = new Command("ping www.baidu.com");
+//        String out = CommandRpcClinetAdapter.SubmitCommand(c);
+//        System.out.println(out);
+//    }
 
     /**
      * @transation： 元数据处理测试
@@ -48,48 +55,48 @@ class MetaflinkApplicationTests {
      * Field{name='birth', typeName='DATE', type=91, pk=false}],
      * count=3}
      */
+//    @Test
+//    void testdatabase() throws SQLException {
+//        DatabaseConfig dc = new DatabaseConfig();
+//        dc.setDriverClassName("com.mysql.jdbc.Driver");
+//        dc.setPassword("123456");
+//        dc.setUsername("root");
+//        dc.setUrl("jdbc:mysql://192.168.73.139:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false");
+//
+//        JdbcTemplate jd = DataBaseUtil.getJdbcTemplate(dc);
+//        MetaInfo metaInfo =DataBaseUtil.getMetaInfo(jd ,"select * from redis",null);
+//        System.out.println(metaInfo);
+//
+//        Table table = DataBaseUtil.getTableMetaInfo(jd ,"select * from redis",null);
+//        System.out.println(table);
+//    }
 
-    void testdatabase() throws SQLException {
-        DatabaseConfig dc = new DatabaseConfig();
-        dc.setDriverClassName("com.mysql.jdbc.Driver");
-        dc.setPassword("123456");
-        dc.setUsername("root");
-        dc.setUrl("jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false");
 
-        JdbcTemplate jd = DataBaseUtil.getJdbcTemplate(dc);
-        MetaInfo metaInfo =DataBaseUtil.getMetaInfo(jd ,"select * from redis",null);
-        System.out.println(metaInfo);
-
-        Table table = DataBaseUtil.getTableMetaInfo(jd ,"select * from redis",null);
-        System.out.println(table);
-    }
-
-
-    /**
-     * @attention: !!!!! 需要给java包添加 tool.jar 包
-     * 位置在 /jre/lib/tool.jar
-     * @throws Exception
-     */
-    @Test
-    void clasrunertest() throws Exception {
-        String sourcse = "import java.util.Arrays;" +
-                "public class Main" +
-                "{" +
-                "public static void main(String[] args) {" +
-                "System.out.println(Arrays.toString(args));" +
-                "}" +
-                "}";
-        ClassRuner.run(sourcse, "1", "2");
-    }
+//    /**
+//     * @attention: !!!!! 需要给java包添加 tool.jar 包
+//     * 位置在 /jre/lib/tool.jar
+//     * @throws Exception
+//     */
+//    @Test
+//    void clasrunertest() throws Exception {
+//        String sourcse = "import java.util.Arrays;" +
+//                "public class Main" +
+//                "{" +
+//                "public static void main(String[] args) {" +
+//                "System.out.println(Arrays.toString(args));" +
+//                "}" +
+//                "}";
+//        ClassRuner.run(sourcse, "1", "2");
+//    }
     @Autowired
     DataBaseConfigServiceImpl dataBaseConfigService;
-
+    @Test
     void DataBaseConfigtest() throws SQLException {
         DatabaseConfig dc = new DatabaseConfig();
         dc.setDriverClassName("com.mysql");
         dc.setPassword("123456");
         dc.setUsername("nidefuqin");
-        dc.setUrl("localhost");
+        dc.setUrl("192.168.73");
         //dc.setId((long)(8));
         dc.setSql("abababab");
         //测试列出全部DataBaseConfig的信息
@@ -116,26 +123,49 @@ class MetaflinkApplicationTests {
         {
             System.out.println(i);
         }
-        System.out.println("-------------The Delete By id Function has been tested!-------------");
-        dataBaseConfigService.DeleteAllDataBaseConfig();
-        List<DatabaseConfig>databaseConfigs3=dataBaseConfigService.ListAllDataBaseConfig();
-        if(databaseConfigs3==null)
-            System.out.println("Empty!");
-        else
-        {
-            for(DatabaseConfig i:databaseConfigs3)
-            {
-                System.out.println(i);
-            }
-        }
-        System.out.println("-------------The DeleteAll Function has been tested!-------------");
+//        System.out.println("-------------The Delete By id Function has been tested!-------------");
+//        dataBaseConfigService.DeleteAllDataBaseConfig();
+//        List<DatabaseConfig>databaseConfigs3=dataBaseConfigService.ListAllDataBaseConfig();
+//        if(databaseConfigs3==null)
+//            System.out.println("Empty!");
+//        else
+//        {
+//            for(DatabaseConfig i:databaseConfigs3)
+//            {
+//                System.out.println(i);
+//            }
+//        }
+//        System.out.println("-------------The DeleteAll Function has been tested!-------------");
 
 
 
     }
 
 
+    @Autowired
+    UserConfigMapper userConfigMapper;
 
+    @Test
+    void test() throws Exception {
+        List<UserConfig> users = userConfigMapper.ListAllUser();
+        for (UserConfig user : users) {
+            System.out.println(user);
+        }
+    }
 
+    @Autowired
+    UserJobConfigMapper userJobConfigMapper;
 
+    @Test
+    void test2() throws Exception {
+        List<UserJobConfig> users = userJobConfigMapper.ListAllJob();
+        for (UserJobConfig user : users) {
+            System.out.println(user);
+        }
+
+        UserJobConfig userJobConfig = new UserJobConfig();
+        userJobConfig.setUserId(1233);
+        userJobConfig.setJobId("wqseewwqe");
+        userJobConfigMapper.InsertJob(userJobConfig);
+    }
 }

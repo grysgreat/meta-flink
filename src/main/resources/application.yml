@@ -4,5 +4,3 @@ spring:
     static-path-pattern: /static/**
   thymeleaf:
     cache: false
-    suffix: .html
-    prefix: classpath:/templates/

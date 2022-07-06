@@ -29,7 +29,7 @@ import com.example.metaflink.database.enums.SetterEnum;
 import com.example.metaflink.database.enums.SqlBuilderEnum;
 import com.example.metaflink.database.exception.ConnectorException;
 import com.example.metaflink.database.utils.CollectionUtils;
-import com.example.metaflink.util.DataBaseUtil;
+import com.example.metaflink.database.utils.DatabaseUtils;
 import com.example.metaflink.database.utils.JDBCUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -97,7 +97,7 @@ public abstract class AbstractDatabaseConnector implements Database{
             String quotation = buildSqlWithQuotation();
             String metaSql = new StringBuilder().append("select * from ").append(quotation).append(tableName).append(quotation).toString();
             metaSql = this.getMetaSql(metaSql, cfg.getConnectorType());
-            metaInfo = DataBaseUtil.getMetaInfo(jdbcTemplate, metaSql, tableName);
+            metaInfo = DatabaseUtils.getMetaInfo(jdbcTemplate, metaSql, tableName);
         } catch (Exception e) {
             logger.error(e.getMessage());
         } finally {
@@ -334,13 +334,13 @@ public abstract class AbstractDatabaseConnector implements Database{
 
     @Override
     public JdbcTemplate getJdbcTemplate(DatabaseConfig config) {
-        return DataBaseUtil.getJdbcTemplate(config);
+        return DatabaseUtils.getJdbcTemplate(config);
     }
 
     @Override
     public void close(JdbcTemplate jdbcTemplate) {
         try {
-            DataBaseUtil.close(jdbcTemplate);
+            DatabaseUtils.close(jdbcTemplate);
         } catch (SQLException e) {
             logger.error("Close jdbcTemplate failed: {}", e.getMessage());
         }
@@ -371,7 +371,7 @@ public abstract class AbstractDatabaseConnector implements Database{
         MetaInfo metaInfo = null;
         try {
             jdbcTemplate = getJdbcTemplate(cfg);
-            metaInfo = DataBaseUtil.getMetaInfo(jdbcTemplate, cfg.getSql(), null);
+            metaInfo = DatabaseUtils.getMetaInfo(jdbcTemplate, cfg.getSql(), null);
         } catch (Exception e) {
             logger.error(e.getMessage());
         } finally {

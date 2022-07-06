@@ -1,5 +1,6 @@
 package com.example.metaflink.Service;
 
+import com.example.metaflink.database.config.RedisConfig;
 import com.example.metaflink.database.config.RedisConfig1;
 import com.example.metaflink.mapper.RedisMapper;
 import org.springframework.beans.factory.annotation.Autowired;

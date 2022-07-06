@@ -28,7 +28,6 @@ public class Table implements Serializable {
     // 表名
     private String name;
     private String sqlType;
-    private String javaContext;
 
     public String getSqlType() {
         return sqlType;
@@ -75,103 +74,11 @@ public class Table implements Serializable {
         return this;
     }
 
-    public String getJavaContext() {
-        return javaContext;
-    }
-
-    public void setJavaContext(String javaContext) {
-        this.javaContext = javaContext;
-    }
-
     public long getCount() {
         return count;
     }
 
-
     public void setCount(long count) {
         this.count = count;
-    }
-
-
-    public String Convert2JavaObject(){
-        StringBuilder javaObject = new StringBuilder();
-        javaObject.append("import java.time.LocalDate;\n");
-        javaObject.append("public class ").append(initCap(this.name)).append("{\t\n");
-        //空构造
-
-        //设置字段
-        for (Field names : this.column){
-            javaObject.append("public ").append(sqlType2JavaType(names.getTypeName())).append(" ").append(names.getName()).append(";\t\n");
-        }
-
-        //生成get/set
-        for (Field names : this.column){
-            javaObject.append("public ").append(sqlType2JavaType(names.getTypeName())).append(" get").append(initCap(names.getName())).append("(){\t\n");
-            javaObject.append("return this.").append(names.getName()).append(";\n");
-            javaObject.append("}\t\n");
-        }
-
-        for (Field names : this.column){
-            javaObject.append("public void set").append(initCap(names.getName())).append("(").append(sqlType2JavaType(names.getTypeName())).append(" ").append(names.getName()).append("){\t\n");
-            javaObject.append("\t this.").append(names.getName()).append("=").append(names.getName()).append(";\t\n");
-            javaObject.append("}\t\n");
-        }
-        //重写toString
-        javaObject.append("\t@Override\r\n\tpublic String toString() {\r\n return " + "\"").append(this.name).append("[\" +");
-        for (Field names : this.column){
-            javaObject.append("\"").append(names.getName()).append(":").append("\" +").append(names.getName()).append("+\",\"+");
-        }
-        javaObject.append("\"]\";\t\n}");
-
-
-
-        javaObject.append("\t\n}");
-
-        this.javaContext = javaObject.toString();
-        return javaObject.toString();
-    }
-
-    private String sqlType2JavaType(String sqlType) {
-        if (sqlType.equalsIgnoreCase("bit")) {
-            return "boolean";
-        } else if (sqlType.equalsIgnoreCase("tinyint")) {
-            return "byte";
-        } else if (sqlType.equalsIgnoreCase("smallint")) {
-            return "short";
-        } else if (sqlType.equalsIgnoreCase("int")) {
-            return "int";
-        } else if (sqlType.equalsIgnoreCase("bigint")) {
-            return "long";
-        } else if (sqlType.equalsIgnoreCase("float")) {
-            return "float";
-        } else if (sqlType.equalsIgnoreCase("numeric")
-                || sqlType.equalsIgnoreCase("real") || sqlType.equalsIgnoreCase("money")
-                || sqlType.equalsIgnoreCase("smallmoney")) {
-            return "double";
-        } else if (sqlType.equalsIgnoreCase("varchar") || sqlType.equalsIgnoreCase("char")
-                || sqlType.equalsIgnoreCase("nvarchar") || sqlType.equalsIgnoreCase("nchar")
-                || sqlType.equalsIgnoreCase("text")|| sqlType.equalsIgnoreCase("longtext")) {
-            return "String";
-        } else if (sqlType.equalsIgnoreCase("datetime") || sqlType.equalsIgnoreCase("timestamp")) {
-            return "LocalDateTime";
-        }else if (sqlType.equalsIgnoreCase("date")) {
-            return "LocalDate";
-        } else if (sqlType.equalsIgnoreCase("image")) {
-            return "Blod";
-        }else if (sqlType.equalsIgnoreCase("decimal")) {
-            return "BigDecimal";
-        }
-        return null;
-    }
-    /**
-     * @param str 传入字符串
-     * @return
-     * @description 将传入字符串的首字母转成大写
-     */
-    private String initCap(String str) {
-        char[] ch = str.toCharArray();
-        if (ch[0] >= 'a' && ch[0] <= 'z')
-            ch[0] = (char) (ch[0] - 32);
-        return new String(ch);
     }
 }

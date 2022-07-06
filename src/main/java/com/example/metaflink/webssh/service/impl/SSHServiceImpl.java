@@ -37,9 +37,10 @@ public class SSHServiceImpl implements SSHService {
     public void init(WebSocketSession session) {
         JSch jSch = new JSch();
 
-        SSHEntry entry = new SSHEntry();
-        entry.setSession(session);
-        entry.setjSch(jSch);
+        SSHEntry entry = new SSHEntry() {{
+            setSession(session);
+            setjSch(jSch);
+        }};
 
         connects.put(session.getAttributes().get(Const.SESSION_KEY).toString(), entry);
     }

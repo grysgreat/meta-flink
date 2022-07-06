@@ -10,38 +10,48 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/KafKA")
 public class KafKAConfigController {
     @Autowired
     private KafKAService kafKAService;
 
-    @RequestMapping(value = "/FindAllKafKAConfigs",method = {RequestMethod.GET, RequestMethod.OPTIONS})
+    @RequestMapping("/FindAllKafKAConfigs")
     public List<KafKAConfig> FindAll() {
-
-
-        return kafKAService.FindAllKafKaConfigs();
-
+        List<KafKAConfig> kafKAConfigs = kafKAService.FindAllKafKaConfigs();
+        try {
+            String databasejsons = new ObjectMapper().writeValueAsString(kafKAConfigs);
+            return kafKAConfigs;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return kafKAConfigs;
     }
 
-    @RequestMapping(value = "/FindKafKAById/{id}",method = {RequestMethod.GET, RequestMethod.OPTIONS})
+    @RequestMapping("/FindKafKAById/{id}")
     public KafKAConfig FindById(@PathVariable Integer id) {
-
-        return kafKAService.FindKafKaConfigById(id);
+        KafKAConfig kafKAConfig = kafKAService.FindKafKaConfigById(id);
+        try {
+            String databasejsons = new ObjectMapper().writeValueAsString(kafKAConfig);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return kafKAConfig;
     }
 
-    @RequestMapping(value = "/DeleteAllKafKAConfigs",method = {RequestMethod.GET, RequestMethod.OPTIONS})
+    @RequestMapping("/DeleteAllKafKAConfigs")
     public Boolean DeleteAll() {
         kafKAService.DeleteAllKafKAConfigs();
         return true;
     }
 
-    @RequestMapping(value = "/DeleteKafKAConfigByid/{id}",method = {RequestMethod.GET, RequestMethod.OPTIONS})
+    @RequestMapping("/DeleteKafKAConfigByid/{id}")
     public boolean DeleteById(@PathVariable Integer id) {
         kafKAService.DeleteKafKAConfigById(id);
         return true;
     }
 
-    @RequestMapping(value = "/Insert",method = {RequestMethod.GET, RequestMethod.OPTIONS})
+    @RequestMapping("/Insert")
     public KafKAConfig Insert(@RequestParam(value = "id",required = false) Integer id,
                          @RequestParam(value = "Url") String url,
                          @RequestParam(value = "Topic") String Topic,
@@ -55,7 +65,7 @@ public class KafKAConfigController {
         kafKAService.InsertKafKAConfig(kaConfig);
         return kaConfig;
     }
-    @RequestMapping(value = "/update",method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.OPTIONS})
+    @RequestMapping("/update")
     public KafKAConfig UpdateKafKAConfig(@RequestParam(value = "id",required = true) Integer id, @RequestParam(value = "Url",required = false) String url,
                                     @RequestParam(value = "Topic",required = false) String Topic, @RequestParam(value = "port",required = false) Integer DestPort)
     {
