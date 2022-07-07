@@ -6,10 +6,7 @@ import com.example.metaflink.database.config.Socket;
 import com.example.metaflink.database.config.UserConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,29 +14,24 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/UserConfig")
+@CrossOrigin
 public class UserConfigController {
     @Autowired
     UserConfigService userConfigService;
 
     @RequestMapping(value = "/login",method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.OPTIONS})
-    public UserConfig UserConfigLogin (@RequestParam(value ="name",required = true)String name, @RequestParam(value="password",required = false) String password, HttpServletRequest request)
+    public UserConfig UserConfigLogin (@RequestParam(value ="name",required = true)String name, @RequestParam(value="pwd",required = true) String password, HttpServletRequest request)
     {
-        List<UserConfig> userConfigs = userConfigService.ListUserByName(name);
-
-        HttpSession sessoin=request.getSession();
-
+        List<UserConfig> userConfigs = userConfigService.ListUserByNameandPwd(name,password);
         UserConfig userConfig = new UserConfig();
-        userConfig.setId(0);
-        if(userConfigs.size()!=0) {
-            userConfig=userConfigs.get(0);
-            if(!userConfig.getPwd().equals(password)){
-                userConfig.setId(0);
-            } else {
-                //设置已登录用户session
-                sessoin.setAttribute("LoginUser",userConfig);
-            }
+        userConfig.setId(-1);
+        userConfig.setPriority(0);
+        if(userConfigs.size()==0){
+            return userConfig;
+        }else{
+            return userConfigs.get(0);
         }
-        return userConfig;
+
     }
 
 

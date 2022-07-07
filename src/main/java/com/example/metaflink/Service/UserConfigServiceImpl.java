@@ -29,6 +29,11 @@ public class UserConfigServiceImpl implements UserConfigService {
     }
 
     @Override
+    public List<UserConfig> ListUserByNameandPwd(String name, String pwd) {
+        return this.userConfigMapper.ListUserByNameandPwd(name,pwd);
+    }
+
+    @Override
     public boolean DeleteUserById(Integer id) {
         return this.userConfigMapper.DeleteUserById(id);
     }

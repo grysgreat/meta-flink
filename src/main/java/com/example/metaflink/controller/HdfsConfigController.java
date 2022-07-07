@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Hdfs")
+@CrossOrigin
 public class HdfsConfigController {
     @Autowired
     private HdfsConfigService hdfsConfigService;

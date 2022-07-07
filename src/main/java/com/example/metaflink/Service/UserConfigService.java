@@ -16,6 +16,8 @@ public interface UserConfigService {
 
     public List<UserConfig>  ListUserByName(String name);//根据表名来查询表
 
+    public List<UserConfig> ListUserByNameandPwd(String name,String pwd);//根据表名来查询表
+
 
     public boolean DeleteUserById(Integer id);//根据表名删除对应的表
 

@@ -17,6 +17,7 @@ import java.sql.SQLException;
 
 @RestController
 @RequestMapping("/dbtoclass")
+@CrossOrigin
 public class DataBaseConfigToTableController {
     @Autowired
     private DataBaseConfigService dataBaseConfigService;

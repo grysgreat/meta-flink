@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value="/jobflow")
+@CrossOrigin
 public class JobFlowController {
 
     @Autowired

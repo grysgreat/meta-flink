@@ -23,7 +23,8 @@ public interface UserConfigMapper {
 
     @Select("select * from test.user where name=#{name}")
     public List<UserConfig> ListUserByName(String name);//根据表名来查询表
-
+    @Select("select * from test.user where name=#{name} and pwd=#{pwd}")
+    public List<UserConfig> ListUserByNameandPwd(String name,String pwd);//根据表名来查询表
 
     @Delete("delete from test.user where id=#{id}")
     @Transactional

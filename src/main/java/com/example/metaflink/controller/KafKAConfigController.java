@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/KafKA")
+@CrossOrigin
 public class KafKAConfigController {
     @Autowired
     private KafKAService kafKAService;

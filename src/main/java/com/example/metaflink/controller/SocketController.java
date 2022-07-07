@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Socket")
+@CrossOrigin
 public class SocketController {
     @Autowired
     private SocketService socketService;

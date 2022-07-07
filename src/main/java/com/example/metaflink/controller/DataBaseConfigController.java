@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/DataBase")
 @Api(tags = "数据库管理")
+@CrossOrigin
 public class DataBaseConfigController {
     @Autowired
     private DataBaseConfigService dataBaseConfigService;
