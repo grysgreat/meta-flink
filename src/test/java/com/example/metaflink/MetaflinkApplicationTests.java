@@ -1,9 +1,9 @@
 package com.example.metaflink;
 
 import com.example.metaflink.Service.DataBaseConfigServiceImpl;
-import com.example.metaflink.database.config.DatabaseConfig;
-import com.example.metaflink.database.config.MetaInfo;
-import com.example.metaflink.database.config.Table;
+import com.example.metaflink.database.config.*;
+import com.example.metaflink.mapper.UserConfigMapper;
+import com.example.metaflink.mapper.UserJobConfigMapper;
 import com.example.metaflink.util.ClassRuner;
 import com.example.metaflink.util.DataBaseUtil;
 import org.junit.jupiter.api.Test;
@@ -134,7 +134,32 @@ class MetaflinkApplicationTests {
 
     }
 
+    @Autowired
+    UserConfigMapper userConfigMapper;
 
+    @Test
+    void test() throws Exception {
+        List<UserConfig> users = userConfigMapper.ListAllUser();
+        for (UserConfig user : users) {
+            System.out.println(user);
+        }
+    }
+
+    @Autowired
+    UserJobConfigMapper userJobConfigMapper;
+
+    @Test
+    void test2() throws Exception {
+        List<UserJobConfig> users = userJobConfigMapper.ListAllJob();
+        for (UserJobConfig user : users) {
+            System.out.println(user);
+        }
+
+        UserJobConfig userJobConfig = new UserJobConfig();
+        userJobConfig.setUserId(1233);
+        userJobConfig.setJobId("wqseewwqe");
+        userJobConfigMapper.InsertJob(userJobConfig);
+    }
 
 
 
