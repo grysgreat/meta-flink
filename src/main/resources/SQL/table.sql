@@ -233,3 +233,40 @@ INSERT INTO `test1` VALUES (234, '567', 234);
 
 SET FOREIGN_KEY_CHECKS = 1;
 
+DROP TABLE IF EXISTS `user`;
+
+CREATE TABLE `user` (
+                        `id` int(15) NOT NULL AUTO_INCREMENT,
+                        `name` varchar(10) NOT NULL,
+                        `pwd` varchar(10) NOT NULL DEFAULT '123',
+                        `priority` int(1) NOT NULL DEFAULT '1',
+                        PRIMARY KEY (`id`,`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+/*Data for the table `user` */
+
+insert  into `user`(`id`,`name`,`pwd`,`priority`) values
+    (1,'a','123',1);
+
+/*Table structure for table `userjob` */
+
+DROP TABLE IF EXISTS `userjob`;
+
+CREATE TABLE `userjob` (
+                           `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '用户id',
+                           `jobId` varchar(50) DEFAULT NULL,
+                           `userId` int(20) DEFAULT NULL,
+                           PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+/*Data for the table `userjob` */
+
+insert  into `userjob`(`id`,`jobId`,`userId`) values
+                                                  (1,'123213',123123),
+                                                  (2,'wqe',1233),
+                                                  (3,'asd123',2123);
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
