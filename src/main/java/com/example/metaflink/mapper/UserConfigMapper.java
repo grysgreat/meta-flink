@@ -21,8 +21,8 @@ public interface UserConfigMapper {
     public void InsertUser(UserConfig userConfig);//增加数据库
 
 
-    @Select("select * from test.user where id=#{id}")
-    public UserConfig ListUserById(int id);//根据表名来查询表
+    @Select("select * from test.user where name=#{name}")
+    public List<UserConfig> ListUserByName(String name);//根据表名来查询表
 
 
     @Delete("delete from test.user where id=#{id}")

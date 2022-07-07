@@ -14,7 +14,7 @@ public interface UserConfigService {
     public void InsertUser(UserConfig userConfig);//增加数据库
 
 
-    public UserConfig ListUserById(int id);//根据表名来查询表
+    public List<UserConfig>  ListUserByName(String name);//根据表名来查询表
 
 
     public boolean DeleteUserById(Integer id);//根据表名删除对应的表

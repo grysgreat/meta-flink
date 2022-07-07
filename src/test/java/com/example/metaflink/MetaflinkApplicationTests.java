@@ -1,6 +1,7 @@
 package com.example.metaflink;
 
 import com.example.metaflink.Service.DataBaseConfigServiceImpl;
+import com.example.metaflink.Service.UserConfigService;
 import com.example.metaflink.database.config.*;
 import com.example.metaflink.mapper.UserConfigMapper;
 import com.example.metaflink.mapper.UserJobConfigMapper;
@@ -161,6 +162,12 @@ class MetaflinkApplicationTests {
         userJobConfigMapper.InsertJob(userJobConfig);
     }
 
-
-
+    @Autowired
+    UserConfigService userConfigService;
+    @Test
+    void test3() throws Exception {
+        List<UserConfig> userConfigs = userConfigService.ListUserByName("a");
+        System.out.println(userConfigs.size());
+        System.out.println(userConfigs.get(0));
+    }
 }

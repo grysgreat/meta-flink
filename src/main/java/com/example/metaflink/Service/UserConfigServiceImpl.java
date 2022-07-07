@@ -24,8 +24,8 @@ public class UserConfigServiceImpl implements UserConfigService {
     }
 
     @Override
-    public UserConfig ListUserById(int id) {
-        return this.userConfigMapper.ListUserById(id);
+    public List<UserConfig> ListUserByName(String name) {
+        return this.userConfigMapper.ListUserByName(name);
     }
 
     @Override
