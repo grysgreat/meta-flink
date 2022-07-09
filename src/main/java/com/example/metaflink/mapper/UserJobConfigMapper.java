@@ -30,4 +30,7 @@ public interface UserJobConfigMapper {
     public boolean DeleteJobById(String jobId);//根据表名删除对应的表
 
 
+    @Select("select jobId from test.userjob where userId = #{userId} ")
+    public List<String> ListJobidByuserid(int userId);
+
 }

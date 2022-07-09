@@ -6,3 +6,5 @@ spring:
     cache: false
     suffix: .html
     prefix: classpath:/templates/
+flink:
+  baseurl: http://localhost:8081
