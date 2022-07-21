@@ -26,14 +26,13 @@ public class OpcUaController {
 
 
     @RequestMapping(value = "/insert")
-    public boolean InsertOpcUa(@RequestParam(value ="id",required = false)Integer id,
+    public boolean InsertOpcUa(
                                @RequestParam(value="serverUrl",required = false) String serverUrl,
-                               @RequestParam(value = "userName",required = false)String userName,
+                               @RequestParam(value ="userName",required = false)String userName,
                                @RequestParam(value="password",required = false) String password,
                                @RequestParam(value="isAnonymous",required = false) Boolean isAnonymous,
                                @RequestParam(value="identifier",required = false) String identifier){
         OpcUaConfig opcUaConfig = new OpcUaConfig();
-//        opcUaConfig.setId(id);
         opcUaConfig.setServerUrl(serverUrl);
         opcUaConfig.setUserName(userName);
         opcUaConfig.setPassword(password);

@@ -11,7 +11,7 @@ public interface OpcUaMapper {
     @Select("select * from test.opcua")
     List<OpcUaConfig> AllOpcUaConfig();
 
-    @Select("select * from test.opcua where ID=#{id}")
+    @Select("select * from test.opcua where Id=#{id}")
     OpcUaConfig ListOpcUaConfigById(Integer id);
 
     @Insert("insert into test.opcua(serverUrl,userName,password,isAnonymous,identifier) " +
@@ -19,7 +19,8 @@ public interface OpcUaMapper {
     @Transactional
     boolean InsertOpcUaConfig(OpcUaConfig opcUaConfig);
 
-    @Delete("delete form test.opcua where Id=#{id}")
+    @Delete("delete from test.opcua where Id=#{id}")
+    @Transactional
     boolean DeleteOpcUaConfigById(Integer id);
 
     @Update("update test.opcua set Id=#{id}," +
