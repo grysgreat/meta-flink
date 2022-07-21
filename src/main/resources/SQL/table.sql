@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MYSQL
+ Source Server         : docker
  Source Server Type    : MySQL
- Source Server Version : 50726
- Source Host           : 127.0.0.1:13306
+ Source Server Version : 50716
+ Source Host           : localhost:3306
  Source Schema         : test
 
  Target Server Type    : MySQL
- Target Server Version : 50726
+ Target Server Version : 50716
  File Encoding         : 65001
 
- Date: 04/06/2022 15:40:48
+ Date: 21/07/2022 16:47:19
 */
 
 SET NAMES utf8mb4;
@@ -33,7 +33,7 @@ CREATE TABLE `DataBaseConfigs`  (
                                     `tablename` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
                                     `basename` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
                                     PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of DataBaseConfigs
@@ -50,12 +50,13 @@ CREATE TABLE `Hdfs`  (
                          `Id` int(11) NOT NULL AUTO_INCREMENT,
                          `type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
                          PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of Hdfs
 -- ----------------------------
 INSERT INTO `Hdfs` VALUES ('192.168.10.11231234', 9, 'json');
+INSERT INTO `Hdfs` VALUES ('192.168.10.11231234', 10, 'csv');
 
 -- ----------------------------
 -- Table structure for KaFKA
@@ -67,7 +68,7 @@ CREATE TABLE `KaFKA`  (
                           `port` int(11) NULL DEFAULT NULL COMMENT '端口号',
                           `Topic` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '主题',
                           PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of KaFKA
@@ -85,7 +86,7 @@ CREATE TABLE `Sockets`  (
                             `Url` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
                             `Id` int(11) NOT NULL AUTO_INCREMENT,
                             PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of Sockets
@@ -102,7 +103,7 @@ CREATE TABLE `jobflow`  (
                             `jsondata` varchar(5255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
                             `jobjson` varchar(5255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
                             PRIMARY KEY (`jobid`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of jobflow
@@ -125,7 +126,7 @@ INSERT INTO `jobflow` VALUES ('fe30807613b119bbc1fa495cbd5fa737', '{\"dragbody_o
 DROP TABLE IF EXISTS `kafka`;
 CREATE TABLE `kafka`  (
     `ktes` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of kafka
@@ -154,7 +155,7 @@ INSERT INTO `kafka` VALUES ('sdf');
 DROP TABLE IF EXISTS `kats2`;
 CREATE TABLE `kats2`  (
     `asdfasd` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of kats2
@@ -173,13 +174,45 @@ CREATE TABLE `redis`  (
                           `Password` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
                           `Tablename` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
                           PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of redis
 -- ----------------------------
 INSERT INTO `redis` VALUES ('192.168.10.11231234', 9881, 'terst', 11, '2134', '123456', 'tabed');
 INSERT INTO `redis` VALUES ('192.168.10.11231234', 123, 'setse', 13, 'root', '123456', 'nate');
+
+-- ----------------------------
+-- Table structure for rtmp
+-- ----------------------------
+DROP TABLE IF EXISTS `rtmp`;
+CREATE TABLE `rtmp`  (
+                         `Id` int(11) NOT NULL AUTO_INCREMENT,
+                         `Url` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+                         PRIMARY KEY (`Id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of rtmp
+-- ----------------------------
+INSERT INTO `rtmp` VALUES (2, 'asdfasdf ');
+INSERT INTO `rtmp` VALUES (3, 'sdfwesdfc');
+
+-- ----------------------------
+-- Table structure for rtsp
+-- ----------------------------
+DROP TABLE IF EXISTS `rtsp`;
+CREATE TABLE `rtsp`  (
+                         `Id` int(11) NOT NULL AUTO_INCREMENT,
+                         `Url` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+                         PRIMARY KEY (`Id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of rtsp
+-- ----------------------------
+INSERT INTO `rtsp` VALUES (2, '192.168.10.11231234');
+INSERT INTO `rtsp` VALUES (3, 'sdfsdf ');
 
 -- ----------------------------
 -- Table structure for student
@@ -190,7 +223,7 @@ CREATE TABLE `student`  (
                             `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
                             `birth` date NULL DEFAULT NULL,
                             PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of student
@@ -207,7 +240,7 @@ CREATE TABLE `student_copy1`  (
                                   `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
                                   `birth` date NULL DEFAULT NULL,
                                   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of student_copy1
@@ -223,7 +256,7 @@ CREATE TABLE `test1`  (
                           `a1` int(255) NULL DEFAULT NULL,
                           `a2` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
                           `a3` int(255) NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of test1
@@ -231,42 +264,40 @@ CREATE TABLE `test1`  (
 INSERT INTO `test1` VALUES (234, '123', 123);
 INSERT INTO `test1` VALUES (234, '567', 234);
 
-SET FOREIGN_KEY_CHECKS = 1;
-
+-- ----------------------------
+-- Table structure for user
+-- ----------------------------
 DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user`  (
+                         `id` int(15) NOT NULL AUTO_INCREMENT,
+                         `name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+                         `pwd` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '123',
+                         `priority` int(1) NOT NULL DEFAULT 1,
+                         PRIMARY KEY (`id`, `name`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `user` (
-                        `id` int(15) NOT NULL AUTO_INCREMENT,
-                        `name` varchar(10) NOT NULL,
-                        `pwd` varchar(10) NOT NULL DEFAULT '123',
-                        `priority` int(1) NOT NULL DEFAULT '1',
-                        PRIMARY KEY (`id`,`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES (1, 'a', '123', 1);
+INSERT INTO `user` VALUES (2, 'hxy', '123', 2);
 
-/*Data for the table `user` */
-
-insert  into `user`(`id`,`name`,`pwd`,`priority`) values
-    (1,'a','123',1);
-
-/*Table structure for table `userjob` */
-
+-- ----------------------------
+-- Table structure for userjob
+-- ----------------------------
 DROP TABLE IF EXISTS `userjob`;
+CREATE TABLE `userjob`  (
+                            `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '用户id',
+                            `jobId` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                            `userId` int(20) NULL DEFAULT NULL,
+                            PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `userjob` (
-                           `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '用户id',
-                           `jobId` varchar(50) DEFAULT NULL,
-                           `userId` int(20) DEFAULT NULL,
-                           PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+-- ----------------------------
+-- Records of userjob
+-- ----------------------------
+INSERT INTO `userjob` VALUES (1, '123213', 123123);
+INSERT INTO `userjob` VALUES (2, 'wqe', 1233);
+INSERT INTO `userjob` VALUES (3, 'asd123', 2123);
 
-/*Data for the table `userjob` */
-
-insert  into `userjob`(`id`,`jobId`,`userId`) values
-                                                  (1,'123213',123123),
-                                                  (2,'wqe',1233),
-                                                  (3,'asd123',2123);
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+SET FOREIGN_KEY_CHECKS = 1;
