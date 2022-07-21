@@ -11,7 +11,7 @@
  Target Server Version : 50716
  File Encoding         : 65001
 
- Date: 21/07/2022 16:47:19
+ Date: 21/07/2022 20:03:10
 */
 
 SET NAMES utf8mb4;
@@ -22,17 +22,17 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `DataBaseConfigs`;
 CREATE TABLE `DataBaseConfigs`  (
-                                    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-                                    `driverClassName` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '驱动类名',
-                                    `url` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '连接地址',
-                                    `username` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '账号',
-                                    `password` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '密码',
-                                    `connectorType` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-                                    `Sql` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-                                    `port` int(15) NULL DEFAULT NULL,
-                                    `tablename` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-                                    `basename` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-                                    PRIMARY KEY (`id`) USING BTREE
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `driverClassName` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '驱动类名',
+  `url` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '连接地址',
+  `username` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '账号',
+  `password` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '密码',
+  `connectorType` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `Sql` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `port` int(15) NULL DEFAULT NULL,
+  `tablename` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `basename` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -46,10 +46,10 @@ INSERT INTO `DataBaseConfigs` VALUES (24, 'com.mysql', '192.168.73', 'nidefuqin'
 -- ----------------------------
 DROP TABLE IF EXISTS `Hdfs`;
 CREATE TABLE `Hdfs`  (
-                         `Url` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-                         `Id` int(11) NOT NULL AUTO_INCREMENT,
-                         `type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-                         PRIMARY KEY (`Id`) USING BTREE
+  `Url` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`Id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -63,11 +63,11 @@ INSERT INTO `Hdfs` VALUES ('192.168.10.11231234', 10, 'csv');
 -- ----------------------------
 DROP TABLE IF EXISTS `KaFKA`;
 CREATE TABLE `KaFKA`  (
-                          `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-                          `Url` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'Url',
-                          `port` int(11) NULL DEFAULT NULL COMMENT '端口号',
-                          `Topic` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '主题',
-                          PRIMARY KEY (`Id`) USING BTREE
+  `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `Url` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'Url',
+  `port` int(11) NULL DEFAULT NULL COMMENT '端口号',
+  `Topic` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '主题',
+  PRIMARY KEY (`Id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -82,10 +82,10 @@ INSERT INTO `KaFKA` VALUES (21, '192.168.10.11231234', 9092, 'ad');
 -- ----------------------------
 DROP TABLE IF EXISTS `Sockets`;
 CREATE TABLE `Sockets`  (
-                            `Port` int(11) NULL DEFAULT NULL,
-                            `Url` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-                            `Id` int(11) NOT NULL AUTO_INCREMENT,
-                            PRIMARY KEY (`Id`) USING BTREE
+  `Port` int(11) NULL DEFAULT NULL,
+  `Url` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`Id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -99,10 +99,10 @@ INSERT INTO `Sockets` VALUES (111, '192.168.10.11231234', 5);
 -- ----------------------------
 DROP TABLE IF EXISTS `jobflow`;
 CREATE TABLE `jobflow`  (
-                            `jobid` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-                            `jsondata` varchar(5255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                            `jobjson` varchar(5255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                            PRIMARY KEY (`jobid`) USING BTREE
+  `jobid` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `jsondata` varchar(5255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `jobjson` varchar(5255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`jobid`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -125,7 +125,7 @@ INSERT INTO `jobflow` VALUES ('fe30807613b119bbc1fa495cbd5fa737', '{\"dragbody_o
 -- ----------------------------
 DROP TABLE IF EXISTS `kafka`;
 CREATE TABLE `kafka`  (
-    `ktes` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+  `ktes` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -154,7 +154,7 @@ INSERT INTO `kafka` VALUES ('sdf');
 -- ----------------------------
 DROP TABLE IF EXISTS `kats2`;
 CREATE TABLE `kats2`  (
-    `asdfasd` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL
+  `asdfasd` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -162,18 +162,56 @@ CREATE TABLE `kats2`  (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for modbus
+-- ----------------------------
+DROP TABLE IF EXISTS `modbus`;
+CREATE TABLE `modbus`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `port` int(11) NULL DEFAULT NULL,
+  `data` varchar(2048) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `url` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of modbus
+-- ----------------------------
+INSERT INTO `modbus` VALUES (2, 33023, '[{\"type\":12,\"slave_id\":12,\"offset\":4,\"datatype\":23},{\"type\":132,\"slave_id\":2,\"offset\":3,\"datatype\":2}]', 'sdfasdfadswe');
+INSERT INTO `modbus` VALUES (3, 123, '[{\"type\":1,\"slave_id\":1,\"offset\":1,\"datatype\":1},{\"type\":2,\"slave_id\":2,\"offset\":2,\"datatype\":2}]', '12312312345sdfawsefaew');
+
+-- ----------------------------
+-- Table structure for opcua
+-- ----------------------------
+DROP TABLE IF EXISTS `opcua`;
+CREATE TABLE `opcua`  (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `serverUrl` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `userName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `isAnonymous` tinyint(1) NULL DEFAULT NULL,
+  `identifier` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`Id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of opcua
+-- ----------------------------
+INSERT INTO `opcua` VALUES (1, 'csfasef', 'sdfawe', 'awefawf', 0, 'asfaewafwef');
+INSERT INTO `opcua` VALUES (2, 'sdfdsf', 'asfawef ', 'sdfwsef', 1, 'sdfe');
+
+-- ----------------------------
 -- Table structure for redis
 -- ----------------------------
 DROP TABLE IF EXISTS `redis`;
 CREATE TABLE `redis`  (
-                          `Url` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-                          `port` int(11) NULL DEFAULT NULL,
-                          `Topic` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-                          `Id` int(64) NOT NULL AUTO_INCREMENT,
-                          `Username` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-                          `Password` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-                          `Tablename` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-                          PRIMARY KEY (`Id`) USING BTREE
+  `Url` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `port` int(11) NULL DEFAULT NULL,
+  `Topic` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `Id` int(64) NOT NULL AUTO_INCREMENT,
+  `Username` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `Password` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `Tablename` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`Id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -187,9 +225,9 @@ INSERT INTO `redis` VALUES ('192.168.10.11231234', 123, 'setse', 13, 'root', '12
 -- ----------------------------
 DROP TABLE IF EXISTS `rtmp`;
 CREATE TABLE `rtmp`  (
-                         `Id` int(11) NOT NULL AUTO_INCREMENT,
-                         `Url` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-                         PRIMARY KEY (`Id`) USING BTREE
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Url` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`Id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -203,9 +241,9 @@ INSERT INTO `rtmp` VALUES (3, 'sdfwesdfc');
 -- ----------------------------
 DROP TABLE IF EXISTS `rtsp`;
 CREATE TABLE `rtsp`  (
-                         `Id` int(11) NOT NULL AUTO_INCREMENT,
-                         `Url` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-                         PRIMARY KEY (`Id`) USING BTREE
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Url` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`Id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -219,10 +257,10 @@ INSERT INTO `rtsp` VALUES (3, 'sdfsdf ');
 -- ----------------------------
 DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student`  (
-                            `id` int(11) NOT NULL,
-                            `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-                            `birth` date NULL DEFAULT NULL,
-                            PRIMARY KEY (`id`) USING BTREE
+  `id` int(11) NOT NULL,
+  `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `birth` date NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -236,10 +274,10 @@ INSERT INTO `student` VALUES (32, 'asdf', '2022-04-22');
 -- ----------------------------
 DROP TABLE IF EXISTS `student_copy1`;
 CREATE TABLE `student_copy1`  (
-                                  `id` int(11) NOT NULL,
-                                  `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-                                  `birth` date NULL DEFAULT NULL,
-                                  PRIMARY KEY (`id`) USING BTREE
+  `id` int(11) NOT NULL,
+  `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `birth` date NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -253,9 +291,9 @@ INSERT INTO `student_copy1` VALUES (32, 'asdf', '2022-04-22');
 -- ----------------------------
 DROP TABLE IF EXISTS `test1`;
 CREATE TABLE `test1`  (
-                          `a1` int(255) NULL DEFAULT NULL,
-                          `a2` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-                          `a3` int(255) NULL DEFAULT NULL
+  `a1` int(255) NULL DEFAULT NULL,
+  `a2` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `a3` int(255) NULL DEFAULT NULL
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -269,11 +307,11 @@ INSERT INTO `test1` VALUES (234, '567', 234);
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
-                         `id` int(15) NOT NULL AUTO_INCREMENT,
-                         `name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-                         `pwd` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '123',
-                         `priority` int(1) NOT NULL DEFAULT 1,
-                         PRIMARY KEY (`id`, `name`) USING BTREE
+  `id` int(15) NOT NULL AUTO_INCREMENT,
+  `name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `pwd` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '123',
+  `priority` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`, `name`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -287,10 +325,10 @@ INSERT INTO `user` VALUES (2, 'hxy', '123', 2);
 -- ----------------------------
 DROP TABLE IF EXISTS `userjob`;
 CREATE TABLE `userjob`  (
-                            `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '用户id',
-                            `jobId` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                            `userId` int(20) NULL DEFAULT NULL,
-                            PRIMARY KEY (`id`) USING BTREE
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '用户id',
+  `jobId` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `userId` int(20) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
