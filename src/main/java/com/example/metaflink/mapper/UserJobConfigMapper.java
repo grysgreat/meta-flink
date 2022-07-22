@@ -22,7 +22,7 @@ public interface UserJobConfigMapper {
 
 
     @Select("select * from test.userjob where userId=#{userId}")
-    public UserJobConfig ListJobById(int userId);//根据表名来查询表
+    public List<UserJobConfig> ListJobById(int userId);//根据表名来查询表
 
 
     @Delete("delete from test.userjob where jobId=#{jobId}")

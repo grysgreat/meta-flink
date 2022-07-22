@@ -151,7 +151,7 @@ class MetaflinkApplicationTests {
 
     @Test
     void test2() throws Exception {
-        List<UserJobConfig> users = userJobConfigMapper.ListAllJob();
+        List<UserJobConfig> users = userJobConfigMapper.ListJobById(1233);
         for (UserJobConfig user : users) {
             System.out.println(user);
         }
@@ -164,6 +164,7 @@ class MetaflinkApplicationTests {
 
     @Autowired
     UserConfigService userConfigService;
+
     @Test
     void test3() throws Exception {
         List<UserConfig> userConfigs = userConfigService.ListUserByName("a");
