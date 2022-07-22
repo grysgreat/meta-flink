@@ -1,27 +1,27 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : docker
+ Source Server         : mysql
  Source Server Type    : MySQL
- Source Server Version : 50716
+ Source Server Version : 50738
  Source Host           : localhost:3306
  Source Schema         : test
 
  Target Server Type    : MySQL
- Target Server Version : 50716
+ Target Server Version : 50738
  File Encoding         : 65001
 
- Date: 21/07/2022 20:03:10
+ Date: 21/07/2022 18:47:46
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for DataBaseConfigs
+-- Table structure for databaseconfigs
 -- ----------------------------
-DROP TABLE IF EXISTS `DataBaseConfigs`;
-CREATE TABLE `DataBaseConfigs`  (
+DROP TABLE IF EXISTS `databaseconfigs`;
+CREATE TABLE `databaseconfigs`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `driverClassName` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '驱动类名',
   `url` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '连接地址',
@@ -36,16 +36,16 @@ CREATE TABLE `DataBaseConfigs`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
--- Records of DataBaseConfigs
+-- Records of databaseconfigs
 -- ----------------------------
-INSERT INTO `DataBaseConfigs` VALUES (23, 'mysql.jdbc.driver', '192.168.10.1', 'root', '123456', '123', NULL, 3306, 'click', 'test');
-INSERT INTO `DataBaseConfigs` VALUES (24, 'com.mysql', '192.168.73', 'nidefuqin', '123456', NULL, 'abababab', NULL, NULL, NULL);
+INSERT INTO `databaseconfigs` VALUES (23, 'mysql.jdbc.driver', '192.168.10.1', 'root', '123456', '123', NULL, 3306, 'click', 'test');
+INSERT INTO `databaseconfigs` VALUES (24, 'com.mysql', '192.168.73', 'nidefuqin', '123456', NULL, 'abababab', NULL, NULL, NULL);
 
 -- ----------------------------
--- Table structure for Hdfs
+-- Table structure for hdfs
 -- ----------------------------
-DROP TABLE IF EXISTS `Hdfs`;
-CREATE TABLE `Hdfs`  (
+DROP TABLE IF EXISTS `hdfs`;
+CREATE TABLE `hdfs`  (
   `Url` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -53,46 +53,10 @@ CREATE TABLE `Hdfs`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
--- Records of Hdfs
+-- Records of hdfs
 -- ----------------------------
-INSERT INTO `Hdfs` VALUES ('192.168.10.11231234', 9, 'json');
-INSERT INTO `Hdfs` VALUES ('192.168.10.11231234', 10, 'csv');
-
--- ----------------------------
--- Table structure for KaFKA
--- ----------------------------
-DROP TABLE IF EXISTS `KaFKA`;
-CREATE TABLE `KaFKA`  (
-  `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `Url` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'Url',
-  `port` int(11) NULL DEFAULT NULL COMMENT '端口号',
-  `Topic` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '主题',
-  PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of KaFKA
--- ----------------------------
-INSERT INTO `KaFKA` VALUES (19, 'hadoop102', 9092, 'kfkSQL');
-INSERT INTO `KaFKA` VALUES (20, 'hadoop102', 9092, 'kfkPort');
-INSERT INTO `KaFKA` VALUES (21, '192.168.10.11231234', 9092, 'ad');
-
--- ----------------------------
--- Table structure for Sockets
--- ----------------------------
-DROP TABLE IF EXISTS `Sockets`;
-CREATE TABLE `Sockets`  (
-  `Port` int(11) NULL DEFAULT NULL,
-  `Url` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of Sockets
--- ----------------------------
-INSERT INTO `Sockets` VALUES (667, '192.168.10.11231234', 1);
-INSERT INTO `Sockets` VALUES (111, '192.168.10.11231234', 5);
+INSERT INTO `hdfs` VALUES ('192.168.10.11231234', 9, 'json');
+INSERT INTO `hdfs` VALUES ('192.168.10.11231234', 10, 'csv');
 
 -- ----------------------------
 -- Table structure for jobflow
@@ -162,42 +126,22 @@ CREATE TABLE `kats2`  (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for modbus
--- ----------------------------
-DROP TABLE IF EXISTS `modbus`;
-CREATE TABLE `modbus`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `port` int(11) NULL DEFAULT NULL,
-  `data` varchar(2048) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `url` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of modbus
--- ----------------------------
-INSERT INTO `modbus` VALUES (2, 33023, '[{\"type\":12,\"slave_id\":12,\"offset\":4,\"datatype\":23},{\"type\":132,\"slave_id\":2,\"offset\":3,\"datatype\":2}]', 'sdfasdfadswe');
-INSERT INTO `modbus` VALUES (3, 123, '[{\"type\":1,\"slave_id\":1,\"offset\":1,\"datatype\":1},{\"type\":2,\"slave_id\":2,\"offset\":2,\"datatype\":2}]', '12312312345sdfawsefaew');
-
--- ----------------------------
 -- Table structure for opcua
 -- ----------------------------
 DROP TABLE IF EXISTS `opcua`;
 CREATE TABLE `opcua`  (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Id` int(11) NOT NULL,
   `serverUrl` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `userName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `isAnonymous` tinyint(1) NULL DEFAULT NULL,
   `identifier` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of opcua
 -- ----------------------------
-INSERT INTO `opcua` VALUES (1, 'csfasef', 'sdfawe', 'awefawf', 0, 'asfaewafwef');
-INSERT INTO `opcua` VALUES (2, 'sdfdsf', 'asfawef ', 'sdfwsef', 1, 'sdfe');
 
 -- ----------------------------
 -- Table structure for redis
@@ -228,7 +172,7 @@ CREATE TABLE `rtmp`  (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Url` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of rtmp
@@ -244,13 +188,30 @@ CREATE TABLE `rtsp`  (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Url` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of rtsp
 -- ----------------------------
 INSERT INTO `rtsp` VALUES (2, '192.168.10.11231234');
 INSERT INTO `rtsp` VALUES (3, 'sdfsdf ');
+
+-- ----------------------------
+-- Table structure for sockets
+-- ----------------------------
+DROP TABLE IF EXISTS `sockets`;
+CREATE TABLE `sockets`  (
+  `Port` int(11) NULL DEFAULT NULL,
+  `Url` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`Id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of sockets
+-- ----------------------------
+INSERT INTO `sockets` VALUES (667, '192.168.10.11231234', 1);
+INSERT INTO `sockets` VALUES (111, '192.168.10.11231234', 5);
 
 -- ----------------------------
 -- Table structure for student
@@ -312,7 +273,7 @@ CREATE TABLE `user`  (
   `pwd` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '123',
   `priority` int(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`, `name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user
@@ -329,7 +290,7 @@ CREATE TABLE `userjob`  (
   `jobId` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `userId` int(20) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of userjob
