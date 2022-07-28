@@ -40,7 +40,7 @@ public class UserJobConfigController {
         return jobNum;
     }
 
-    @RequestMapping(value = "addjobid" )
+    @RequestMapping(value = "/addjobid" )
     public boolean AddUserJobid(@RequestParam(value ="jobid",required = true)String Jobid,@RequestParam(value ="userid",required = true)int userid){
         UserJobConfig userJobConfig = new UserJobConfig();
         userJobConfig.setJobId(Jobid);
