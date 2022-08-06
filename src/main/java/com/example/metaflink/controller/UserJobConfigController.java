@@ -48,4 +48,8 @@ public class UserJobConfigController {
         this.userJobConfigMapper.InsertJob(userJobConfig);
         return true;
     }
+    @RequestMapping(value = "/userid")
+    public int Findjobuser(@RequestParam(value ="jobid",required = true)String Jobid){
+        return this.userJobConfigMapper.FindJobuser(Jobid);
+    }
 }

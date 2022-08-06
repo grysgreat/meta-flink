@@ -32,5 +32,6 @@ public interface UserJobConfigMapper {
 
     @Select("select jobId from test.userjob where userId = #{userId} ")
     public List<String> ListJobidByuserid(int userId);
-
+    @Select("select userid from test.userjob where jobId = #{jobId}")
+    public int FindJobuser(String jobiD);
 }
