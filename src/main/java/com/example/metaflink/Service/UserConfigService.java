@@ -21,6 +21,8 @@ public interface UserConfigService {
 
     public boolean DeleteUserById(Integer id);//根据表名删除对应的表
 
+    public boolean DeleteUserByName(String name);//根据表名删除对应的表
+
     public boolean DeleteAllUser();//删除全部的表
 
 }

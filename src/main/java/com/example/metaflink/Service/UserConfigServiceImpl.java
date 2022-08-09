@@ -39,6 +39,12 @@ public class UserConfigServiceImpl implements UserConfigService {
     }
 
     @Override
+    public boolean DeleteUserByName(String name) {
+        return this.userConfigMapper.DeleteUserByName(name);
+    }
+
+
+    @Override
     public boolean DeleteAllUser() {
         return this.userConfigMapper.DeleteAllUser();
     }

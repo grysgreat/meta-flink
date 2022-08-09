@@ -30,6 +30,10 @@ public interface UserConfigMapper {
     @Transactional
     public boolean DeleteUserById(Integer id);//根据表名删除对应的表
 
+    @Delete("delete from test.user where name=#{name}")
+    @Transactional
+    public boolean DeleteUserByName(String name);//根据表名删除对应的表
+
 
     @Delete("delete from test.user")
     @Transactional
