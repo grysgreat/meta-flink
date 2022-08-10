@@ -162,6 +162,15 @@ class MetaflinkApplicationTests {
         userJobConfigMapper.InsertJob(userJobConfig);
     }
 
+    @Test
+    void TestJobidUserNAme(){
+        String jobid ="wqe";
+        String username = this.userJobConfigMapper.FindJobuser(jobid);
+        if(username!=null){
+            System.out.println(username);
+        }
+    }
+
     @Autowired
     UserConfigService userConfigService;
 
@@ -171,4 +180,5 @@ class MetaflinkApplicationTests {
         System.out.println(userConfigs.size());
         System.out.println(userConfigs.get(0));
     }
+
 }

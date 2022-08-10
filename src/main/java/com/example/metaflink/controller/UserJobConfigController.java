@@ -4,6 +4,7 @@ import com.example.metaflink.Service.UserConfigService;
 import com.example.metaflink.database.config.UserConfig;
 import com.example.metaflink.database.config.UserJobConfig;
 import com.example.metaflink.mapper.UserJobConfigMapper;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.web.bind.annotation.*;
@@ -48,8 +49,12 @@ public class UserJobConfigController {
         this.userJobConfigMapper.InsertJob(userJobConfig);
         return true;
     }
-    @RequestMapping(value = "/userid")
-    public int Findjobuser(@RequestParam(value ="jobid",required = true)String Jobid){
-        return this.userJobConfigMapper.FindJobuser(Jobid);
+
+
+    @RequestMapping(value = "/jobUsername")
+    public String Findjobuser(@RequestParam(value ="jobid",required = true)String Jobid){
+        String UserName =  this.userJobConfigMapper.FindJobuser(Jobid);
+        if(UserName == null) UserName = "unKnow";
+        return  UserName;
     }
 }

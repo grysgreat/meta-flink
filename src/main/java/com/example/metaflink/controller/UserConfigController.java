@@ -56,6 +56,11 @@ public class UserConfigController {
     {
         return userConfigService.DeleteUserByName(name);
     }
+    @RequestMapping(value = "/delete/{id}",method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.OPTIONS})
+    public boolean DeleteUserbyid (@PathVariable Integer id)
+    {
+        return userConfigService.DeleteUserById(id);
+    }
 
     //用户管理：插入新用户
     @RequestMapping(value = "/insertUser",method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.OPTIONS})

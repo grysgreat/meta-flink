@@ -32,6 +32,9 @@ public interface UserJobConfigMapper {
 
     @Select("select jobId from test.userjob where userId = #{userId} ")
     public List<String> ListJobidByuserid(int userId);
-    @Select("select userid from test.userjob where jobId = #{jobId}")
-    public int FindJobuser(String jobiD);
+
+    @Select("SELECT a.name FROM" +
+            " test.user a INNER JOIN test.userjob b ON a.id = b.userid where b.jobId= #{jobId}")
+    public String FindJobuser(String jobiD);
+
 }
